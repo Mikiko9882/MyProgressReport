@@ -11,6 +11,11 @@ module My
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
+    config.generators do |g|
+      g.helper          false          # helper以下にファイルを作成しない 
+      g.test_framework  false          # test以下にファイル作成しない     
+    end 
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
@@ -23,5 +28,10 @@ module My
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
+
+    config.time_zone = 'Tokyo'	
+    config.active_record.default_timezone = :local
   end
 end

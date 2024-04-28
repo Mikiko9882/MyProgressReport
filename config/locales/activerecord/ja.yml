@@ -1,0 +1,62 @@
+ja:
+  activerecord:
+    models:
+      test_result: 'テスト結果'
+      school: '学校'
+      grade: '学年'
+      _class: 'クラス'
+      group: 'グループ'
+      teacher: '先生' 
+      student: '生徒'
+      admin: '管理者'
+      subject: '教科'
+    attributes:
+      admin:
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        email: 'メールアドレス'
+      school:
+        name: '学校名'
+        address: '住所'
+        phone_number: '電話番号'
+        email: 'メールアドレス'
+        website: 'ウェブサイト'
+      teacher:
+        name: '名前'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+      student:
+        name: '名前'
+        email: 'メールアドレス'
+        grade_id: '学年'
+        student_class_id: 'クラス'
+        school_id: '学校名'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+      test_result:
+        title: 'テスト結果'
+        test_name: "テスト名"
+        score: "得点"
+        max_score: "満点"
+        achievement_rate: "達成率"
+        created_at: "作成日時"
+        test_date: "テスト実施日"
+        test_type: "教科名"
+        preparation_time_minutes: "学習時間" 
+        display_preparation_time: "学習時間"
+        test_name_id: "テスト名"
+        max_score_id: "満点"
+        subject_id: "教科"
+      grade: 
+        grade_id: '学年'
+      user_class:
+        user_class_id: 'クラス' 
+      group:
+        group_name: 'グループ名'
+    enums:
+      user:
+        role:
+          student: '生徒'
+          teacher: '先生'
+          admin: '管理者'

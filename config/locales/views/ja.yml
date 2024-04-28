@@ -1,0 +1,121 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    register: '登録'
+    logout: 'ログアウト'
+    show: '詳細'
+    edit: '編集'
+    delete: '削除'
+    password_reset: 'パスワードリセット'
+    unspecified: '指定なし'
+    search_word: '検索ワード'
+    message:
+      require_login: 'ログインしてください'
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成できませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新できませんでした"
+      deleted: "%{item}を削除しました"
+      delete_confirm: '削除しますか？'
+      not_authorized: '権限がありません'
+  terms_of_service:
+    show:
+      title: '利用規約'
+  privacy_policy:
+    show:
+      title: 'プライバシーポリシー'
+  teacher:
+    user_sessions:
+      new:
+        title: '先生のログイン'
+      create:
+        success: 'ログインしました'
+        fail: 'ログインに失敗しました'
+      destroy:
+        success: 'ログアウトしました'
+    groups:
+      new:
+        title: 'グループを作成'
+      create:
+        success: 'グループを作成しました'
+        fail: 'グループ作成に失敗しました'
+      index:
+        title: 'グループ一覧'
+      show:
+        title: 'グループ詳細'
+      edit:
+        title: 'グループ名編集'
+    group_users:
+      new:
+        title: 'グループに追加する'
+      create:
+        success: 'グループに追加しました'
+        fail: 'グループに追加できませんでした'
+  admins:
+    sessions:
+      new:
+        title: '管理者用ログイン'
+  admin:
+    schools:
+      new:
+        title: '学校を登録する'
+      index:
+        title: '学校一覧'
+      show:
+        title: '学校詳細'
+      edit:
+        title: '内容を編集'
+    teachers:
+      new:
+        title: '先生を登録する'
+      show:
+        title: '先生詳細'
+      edit:
+        title: '内容を編集'
+  students:
+    sessions:
+      new:
+        title: '生徒用ログイン'
+    registrations:
+      new:
+        title: '新規登録'
+  student:
+    test_results:
+      index:
+        title: "テスト結果一覧"
+        test_name: "テスト名"
+        score: "得点"
+        max_score: "満点"
+        achievement_rate: "達成率"
+        percentage_sign: "%"
+      new:
+        title: 'テスト結果入力'
+      edit:
+        title: '点数編集'
+      subject_achievement_rate:
+        title: 'グラフで見る'
+  teachers:
+    sessions:
+      new:
+        title: '先生用ログイン'
+  teacher:
+    students:
+      index:
+        title: '生徒一覧'
+      edit:
+        title: '生徒編集'
+      show:
+        title: '生徒詳細'
+    test_results:
+      index:
+        title: 'テスト結果一覧'
+      edit:
+        title: 'テスト結果編集'
+      show:
+        title: 'テスト結果詳細'
+      subject_achievement_rate:
+        title: 'グラフで見る'
+  rooms:
+    index:
+      title: 'メッセージ一覧'
+    

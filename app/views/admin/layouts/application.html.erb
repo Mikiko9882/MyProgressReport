@@ -13,7 +13,12 @@
 
   <body>
     <main class="page-wrapper">
-      <%= render 'shared/header' %>
+      <% if current_admin_admin %>
+        <%= render 'shared/admin_header' %>
+      <% else %>
+        <%= render 'shared/header' %>
+      <% end %>
+      
       <%= render 'shared/flash_message' %>
       <%= yield %>
     </main>

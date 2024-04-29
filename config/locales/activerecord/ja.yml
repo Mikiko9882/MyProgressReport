@@ -4,7 +4,7 @@ ja:
       test_result: 'テスト結果'
       school: '学校'
       grade: '学年'
-      _class: 'クラス'
+      student_class: 'クラス'
       group: 'グループ'
       teacher: '先生' 
       student: '生徒'
@@ -21,6 +21,8 @@ ja:
         phone_number: '電話番号'
         email: 'メールアドレス'
         website: 'ウェブサイト'
+      student_class: 
+        name: 'クラス名'
       teacher:
         name: '名前'
         email: 'メールアドレス'

@@ -15,13 +15,14 @@ Rails.application.routes.draw do
 
   # システム管理者用画面
   namespace :admin, path: 'aaaaaaaa' do
-    root to: 'tops#index', as: 'root'
+    root to: 'schools#index', as: 'root'
 
     devise_for :admins,
                only: %i[session password],
                controllers: { passwords: 'admins/passwords',
                               sessions: 'admins/sessions' }
     resources :schools do
+      resources :student_classes, param: :code, only: %i[show new create edit update destroy]
       resources :teachers, param: :code, only: %i[show new create edit update]
     end
   end

@@ -65,6 +65,13 @@ ja:
         title: '学校詳細'
       edit:
         title: '内容を編集'
+    student_classes:
+      new:
+        title: 'クラス名を追加する'
+      show:
+        title: '追加したクラス'
+      edit:
+        title: 'クラス名を変更する'
     teachers:
       new:
         title: '先生を登録する'

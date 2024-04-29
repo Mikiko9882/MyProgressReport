@@ -1,5 +1,6 @@
 class School < ApplicationRecord
   belongs_to :admin
+  has_many :student_classes, dependent: :restrict_with_exception
   
   before_validation :generate_unique_code, on: :create
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_29_025050) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_29_042606) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_29_025050) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "grades", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "schools", force: :cascade do |t|
@@ -40,6 +46,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_29_025050) do
     t.index ["code"], name: "index_schools_on_code", unique: true
   end
 
+  create_table "student_classes", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "school_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_student_classes_on_school_id"
+  end
+
   create_table "teachers", force: :cascade do |t|
     t.string "name"
     t.string "login_id", default: "", null: false
@@ -54,4 +68,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_29_025050) do
   end
 
   add_foreign_key "schools", "admins"
+  add_foreign_key "student_classes", "schools"
 end

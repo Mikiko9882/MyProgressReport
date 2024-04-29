@@ -1,0 +1,58 @@
+<% content_for(:title, t('.title')) %>
+<!-- Breadcrumb -->
+<nav class="container mt-lg-4 pt-5" aria-label="breadcrumb"></nav>
+<!-- Page content -->
+<section class="container mt-4 mb-lg-5 pt-lg-2 pb-5">
+  <!-- Page title + Layout switcher + Search form -->
+  <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
+    <div class="col-lg-5 col-md-4">
+      <h1 class="mb-2 mb-md-0"><%= t '.title' %></h1>
+    </div>
+    <div class="col-lg-7 col-md-8">
+      <%= search_form_for @q, url: teacher_students_path do |f| %>
+        <div class="row align-items-end">
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
+            <div class="input-group">
+              <%= f.search_field :name_cont, class: 'form-control', placeholder: '氏名を検索' %>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
+            <div class="input-group">
+              <%= f.select :grade_id_eq, Grade.all.map{|g| [g.name, g.id]}, { include_blank: '学年を検索' }, { class: 'form-select' } %>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
+            <div class="input-group">
+              <%= f.select :student_class_id_eq, StudentClass.all.map{|c| [c.name, c.id]}, { include_blank: 'クラスを検索' }, { class: 'form-select' } %>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 mb-2">
+            <div class="input-group">
+              <%= f.submit "検索", class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col"><%= Student.human_attribute_name(:name) %></th>
+          <th scope="col"><%= Student.human_attribute_name(:email) %></th>
+          <th scope="col"><%= Student.human_attribute_name(:grade_id) %></th>
+          <th scope="col"><%= Student.human_attribute_name(:student_class_id) %></th>
+          <th scope="col">Action</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= render @students %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <%= paginate @students %>
+</section>

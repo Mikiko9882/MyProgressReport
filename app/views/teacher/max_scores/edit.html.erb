@@ -3,14 +3,14 @@
 <div class="container d-flex flex-wrap justify-content-center justify-content-center pt-5">
   <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
     <h1 class="text-center text-xl-start"><%= t '.title' %></h1>
-    <%= form_with model: [@school, @student_class], url: admin_school_student_class_path(@school), local: true do |f| %>
+    <%= form_with(model: @max_score, url: teacher_max_score_path(@max_score), method: :patch, local: true) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class="row">
         <div class="col-12">
           <div class="position-relative mb-4">
             <div class="form-group">
-              <%= f.label :name %>
-              <%= f.text_field :name, class: 'form-control' %>
+              <%= f.label :max_score %>
+              <%= f.text_field :max_score, class: 'form-control' %>
             </div>
           </div>
         </div>

@@ -106,6 +106,29 @@ ja:
       new:
         title: '先生用ログイン'
   teacher:
+    subjects:
+      index:
+        title: 'テストの要素を追加する'
+      edit:
+        title: '科目名を編集'
+      new:
+        title: '科目名を登録'
+      show:
+        title: '科目詳細'
+    max_scores:
+      edit:
+        title: '編集'
+      new:
+        title: '満点を登録'
+      show:
+        title: '詳細'
+    test_names:
+      edit:
+        title: '編集'
+      new:
+        title: 'テスト名を登録'
+      show:
+        title: '詳細'
     students:
       index:
         title: '生徒一覧'

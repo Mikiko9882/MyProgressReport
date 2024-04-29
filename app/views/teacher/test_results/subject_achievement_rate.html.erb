@@ -1,0 +1,23 @@
+<% content_for(:title, t('.title')) %>
+<div class="container d-flex flex-wrap justify-content-center justify-content-center pt-5">
+  <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
+    <h1><%= t '.title' %></h1>
+  </div>
+  
+  <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 1000px;">
+    <% @subjects.each do |subject| %>
+      <div class="row">
+        <div class="col-md-12">
+          <h2><%= subject %>の結果</h2>
+        </div>
+        <% data = @data_by_subject[subject] %>
+        <div class="col-md-6">
+          <%= line_chart data[:line_chart_data], xtitle: 'テスト名', ytitle: '達成率 (%)', suffix: '%', height: '400px' %>
+        </div>
+        <div class="col-md-6">
+          <%= scatter_chart data[:scatter_chart_data], xtitle: '学習時間（分）', ytitle: '達成率 (%)', suffix: '%', height: '400px' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

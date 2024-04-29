@@ -1,0 +1,64 @@
+<% content_for(:title, t('.title')) %>
+<div class="container d-flex flex-wrap justify-content-center justify-content-center pt-5">
+  <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
+    <h1><%= t '.title' %></h1>
+    <%= form_with model: @student, url: teacher_student_path(@student), local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="row">
+        <div class="col-12">
+          <div class="position-relative mb-4">
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="position-relative mb-4">
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="position-relative mb-4">
+            <div class="form-group">
+              <%= f.label :school_id %>
+              <%= f.collection_select :school_id, School.all, :id, :name, {}, {class: "form-control custom-select-lg"} %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="position-relative mb-4">
+            <div class="form-group">
+              <%= f.label :grade_id %>
+              <%= f.collection_select :grade_id, Grade.all, :id, :name, {}, {class: "form-control custom-select-lg"} %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="position-relative mb-4">
+            <div class="form-group">
+              <%= f.label :student_class_id %>
+              <%= f.collection_select :student_class_id, StudentClass.all, :id, :name, {}, {class: "form-control custom-select-lg"} %>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-4">
+          <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-12 mb-4">
+          <div class="form-group">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <%= f.submit '更新する', class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

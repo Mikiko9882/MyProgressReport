@@ -1,0 +1,21 @@
+<tr>
+  <td>
+    <%= student.name %>
+  </td>
+  <td>
+    <%= student.email %>
+  </td>
+  <td>
+    <%= student.grade.name %>
+  </td>
+  <td>
+    <%= student.student_class.name %>
+  </td>
+  <td>
+    <div class="btn-group" role="group">
+      <%= link_to t('defaults.show'), teacher_student_path(id: student.id), class: 'btn btn-info me-2' %>
+      <%= link_to t('defaults.edit'), edit_teacher_student_path(id: student.id), class: 'btn btn-success me-2' %>
+      <%= button_to t('defaults.delete'), teacher_student_path(id: student.id), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: 'btn btn-danger' %>
+    </div>
+  </td>
+</tr>

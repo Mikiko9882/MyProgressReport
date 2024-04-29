@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :teachers
-  devise_for :admins
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -24,6 +23,28 @@ Rails.application.routes.draw do
     resources :schools do
       resources :student_classes, param: :code, only: %i[show new create edit update destroy]
       resources :teachers, param: :code, only: %i[show new create edit update destroy]
+    end
+  end
+
+  #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  # マルチテナントの切り分け
+  scope '/:school_code' do
+    #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    # 教師用画面
+    namespace :teacher, path: 't' do
+      root to: 'tops#index', as: 'root'
+
+      devise_for :teachers,
+                 only: %i[session password],
+                 controllers: { passwords: 'teachers/passwords',
+                                sessions: 'teachers/sessions' }
+                                
+      resources :students, only: %i[index edit update show destroy]
+      resources :test_results, only: %i[index edit update show destroy] do
+        collection do
+          get :subject_achievement_rate
+        end
+      end
     end
   end
 end

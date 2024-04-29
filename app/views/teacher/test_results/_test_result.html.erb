@@ -1,0 +1,27 @@
+<tr>
+  <td>
+    <%= link_to test_result.student.name, subject_achievement_rate_teacher_test_results_path(id: test_result.student.id) %>
+  </td>
+  <td>
+    <%= test_result.student.grade.name %>
+  </td>
+  <td>
+    <%= test_result.student.student_class.name %>
+  </td>
+  <td>
+    <%= link_to TestName.find(test_result.test_name_id).test_name, teacher_test_result_path(id: test_result.id) %>
+  </td>
+  <td>
+    <%= Subject.find(test_result.subject_id).subject_name %>
+  </td>
+  <td>
+    <%= l test_result.created_at, format: :long %>
+  </td>
+  <td>
+    <div class="btn-group" role="group">
+      <%= link_to t('defaults.show'), teacher_test_result_path(id: test_result.id), class: 'btn btn-info me-2' %>
+      <%= link_to t('defaults.edit'), edit_teacher_test_result_path(id: test_result.id), class: 'btn btn-success me-2' %>
+      <%= button_to t('defaults.delete'), teacher_test_result_path(id: test_result.id), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: 'btn btn-danger' %>
+    </div>  
+  </td>
+</tr>

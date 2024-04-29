@@ -3,6 +3,7 @@ class Teacher::SubjectsController < Teacher::BaseController
 
   def index
     @subjects = current_teacher_teacher.subjects
+    @test_names = current_teacher_teacher.test_names
     @max_scores = current_teacher_teacher.max_scores
   end
 

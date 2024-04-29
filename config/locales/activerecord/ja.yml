@@ -11,6 +11,7 @@ ja:
       admin: '管理者'
       subject: '教科'
       max_score: '満点'
+      test_name: 'テスト名'
     attributes:
       admin:
         password: 'パスワード'
@@ -31,6 +32,8 @@ ja:
         password_confirmation: 'パスワード確認'
       subject:
         subject_name: '科目名'
+      test_name:
+        test_name: 'テスト名'
       max_score:
         max_score: '満点'
       student:

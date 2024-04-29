@@ -8,6 +8,7 @@
           <thead>
             <tr>
               <th><%= Subject.human_attribute_name(:subject_name) %></th>
+              <th><%= TestName.human_attribute_name(:test_name) %></th>
               <th><%= MaxScore.human_attribute_name(:max_score) %></th>
             </tr>
           </thead>
@@ -15,6 +16,11 @@
             <td>
               <% @subjects.each do |subject| %>
                 <%= link_to subject.subject_name, teacher_subject_path(id: subject.id) %><br>
+              <% end %>
+            </td>
+            <td>
+              <% @test_names.each do |test_name| %>
+                <%= link_to test_name.test_name, teacher_test_name_path(id: test_name.id) %><br>
               <% end %>
             </td>
             <td>

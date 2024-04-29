@@ -1,5 +1,9 @@
 class Teacher < ApplicationRecord
   belongs_to :school
+
+  has_many :max_scores, dependent: :destroy
+  has_many :subjects, dependent: :destroy
+  has_many :test_names, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

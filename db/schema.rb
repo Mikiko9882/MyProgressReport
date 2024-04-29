@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_29_061801) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_29_090451) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_29_061801) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "max_scores", force: :cascade do |t|
+    t.integer "max_score", null: false
+    t.bigint "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teacher_id"], name: "index_max_scores_on_teacher_id"
   end
 
   create_table "schools", force: :cascade do |t|
@@ -54,6 +62,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_29_061801) do
     t.index ["school_id"], name: "index_student_classes_on_school_id"
   end
 
+  create_table "subjects", force: :cascade do |t|
+    t.string "subject_name", null: false
+    t.bigint "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teacher_id"], name: "index_subjects_on_teacher_id"
+  end
+
   create_table "teachers", force: :cascade do |t|
     t.string "name"
     t.string "login_id", default: "", null: false
@@ -69,7 +85,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_29_061801) do
     t.index ["school_id"], name: "index_teachers_on_school_id"
   end
 
+  create_table "test_names", force: :cascade do |t|
+    t.string "test_name", null: false
+    t.bigint "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teacher_id"], name: "index_test_names_on_teacher_id"
+  end
+
+  add_foreign_key "max_scores", "teachers"
   add_foreign_key "schools", "admins"
   add_foreign_key "student_classes", "schools"
+  add_foreign_key "subjects", "teachers"
   add_foreign_key "teachers", "schools"
+  add_foreign_key "test_names", "teachers"
 end

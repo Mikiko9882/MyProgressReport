@@ -1,10 +1,9 @@
 class School < ApplicationRecord
   belongs_to :admin
   has_many :student_classes, dependent: :restrict_with_exception
+  has_many :teachers, dependent: :destroy
   
   before_validation :generate_unique_code, on: :create
-
-  has_many :teachers, dependent: :destroy
 
   validates :name, presence: true
   validates :address, presence: true

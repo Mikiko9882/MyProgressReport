@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   # システム管理者用画面
   namespace :admin, path: 'aaaaaaaa' do
-    root to: 'tops#index', as: 'root'
+    root to: 'schools#index', as: 'root'
 
     devise_for :admins,
                only: %i[session password],

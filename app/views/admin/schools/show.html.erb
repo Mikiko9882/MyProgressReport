@@ -43,6 +43,12 @@
               <%= link_to student_class.name, admin_school_student_class_path(@school, student_class) %><br>
             <% end %>
           </td>
+          <td>
+            <% @school.teachers.each do |teacher| %>
+              <%= link_to teacher.name, admin_school_teacher_path(@school, teacher) %><br>
+            <% end %>
+          </td>
+
         </tbody>
       </table>
     </div>

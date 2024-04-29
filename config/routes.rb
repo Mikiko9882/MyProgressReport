@@ -23,7 +23,7 @@ Rails.application.routes.draw do
                               sessions: 'admins/sessions' }
     resources :schools do
       resources :student_classes, param: :code, only: %i[show new create edit update destroy]
-      resources :teachers, param: :code, only: %i[show new create edit update]
+      resources :teachers, param: :code, only: %i[show new create edit update destroy]
     end
   end
 end

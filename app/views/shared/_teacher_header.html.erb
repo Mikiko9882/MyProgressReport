@@ -12,7 +12,19 @@
     </div>
 
     <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">
-      <%= link_to '科目を追加', new_teacher_subject_path, class: 'btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex' %>
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          テストの要素を追加する
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><%= link_to '科目を追加', new_teacher_subject_path, class: 'dropdown-item' %><li>
+          <li><%= link_to '満点を追加', new_teacher_max_score_path, class: 'dropdown-item' %></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">
+      
     </div>
 
     <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">

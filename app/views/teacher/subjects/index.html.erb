@@ -18,6 +18,16 @@
   <% else %>
     <p>No subjects found.</p>
   <% end %>
+  <% if @max_scores.any? %>
+    <ul>
+      <% @max_scores.each do |max_score| %>
+        <li><%= link_to max_score.max_score, teacher_max_score_path(id: max_score.id) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No max scores found.</p>
+  <% end %>
 
   <%= link_to 'New Subject', new_teacher_subject_path %>
+  <%= link_to 'New Max Score', new_teacher_max_score_path %>
 </section>

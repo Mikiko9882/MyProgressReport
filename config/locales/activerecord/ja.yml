@@ -10,6 +10,7 @@ ja:
       student: '生徒'
       admin: '管理者'
       subject: '教科'
+      max_score: '満点'
     attributes:
       admin:
         password: 'パスワード'
@@ -28,6 +29,10 @@ ja:
         login_id: 'ログインID'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
+      subject:
+        subject_name: '科目名'
+      max_score:
+        max_score: '満点'
       student:
         name: '名前'
         email: 'メールアドレス'

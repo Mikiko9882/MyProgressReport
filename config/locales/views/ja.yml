@@ -115,6 +115,13 @@ ja:
         title: '科目名を登録'
       show:
         title: '科目詳細'
+    max_scores:
+      edit:
+        title: '編集'
+      new:
+        title: '満点を登録'
+      show:
+        title: '詳細'
     students:
       index:
         title: '生徒一覧'

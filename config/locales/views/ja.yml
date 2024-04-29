@@ -106,6 +106,9 @@ ja:
       new:
         title: '先生用ログイン'
   teacher:
+    add_tests:
+      index:
+        title: 'テストの要素を追加する'
     students:
       index:
         title: '生徒一覧'

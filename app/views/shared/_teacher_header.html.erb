@@ -2,13 +2,17 @@
   <div class="container px-0">
     <a href="index.html" class="navbar-brand pe-3">
       <%= link_to root_path, class: "navbar-brand pe-3" do %>
-        Learning Mate
+        My Progress Report
       <% end %>
     </a>
     <div id="navbarNav" class="offcanvas offcanvas-end">
       <div class="offcanvas-header border-top">
         <%= link_to (t 'defaults.logout'), destroy_teacher_teacher_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex', data: {turbo_method: :delete} %>
       </div>      
+    </div>
+
+    <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">
+      <%= link_to 'テスト追加', teacher_add_tests_path, class: 'btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex' %>
     </div>
 
     <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">

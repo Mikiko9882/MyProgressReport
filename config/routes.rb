@@ -38,6 +38,12 @@ Rails.application.routes.draw do
                  only: %i[session password],
                  controllers: { passwords: 'teachers/passwords',
                                 sessions: 'teachers/sessions' }
+
+      resources :add_tests, only: [:index] do
+        resources :subjects, param: :code, only: %i[show new create edit update destroy]
+        resources :test_names, param: :code, only: %i[show new create edit update destroy]
+        resources :max_scores, param: :code, only: %i[show new create edit update destroy]
+      end
                                 
       resources :students, only: %i[index edit update show destroy]
       resources :test_results, only: %i[index edit update show destroy] do

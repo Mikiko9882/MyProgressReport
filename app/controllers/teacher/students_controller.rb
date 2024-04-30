@@ -3,7 +3,7 @@ class Teacher::StudentsController < Teacher::BaseController
   
   def index
     @q = current_teacher_teacher.school.students.ransack(params[:q])
-    @students = @q.result(distinct: true).order(created_at: :desc).page(params[:page])
+    @students = @q.result(distinct: true).order(created_at: :desc)
   end
 
 
@@ -34,6 +34,6 @@ class Teacher::StudentsController < Teacher::BaseController
   end
   
   def student_params
-    params.require(:student).permit(:email, :password, :password_confirmation, :name, :grade_id, :student_class_id, :school_id )
+    params.require(:student).permit(:student_number, :password, :password_confirmation, :name, :furigana, :grade_id, :student_class_id, :school_id )
   end
 end

@@ -4,7 +4,7 @@ class Teacher::TestResultsController < Teacher::BaseController
   def index
     @students = current_teacher_teacher.school.students
     @q = TestResult.where(student_id: @students.pluck(:id)).ransack(params[:q])
-    @test_results = @q.result(distinct: true).order(created_at: :desc).page(params[:page])
+    @test_results = @q.result(distinct: true).order(created_at: :desc)
   end
 
   def edit; end

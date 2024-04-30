@@ -27,7 +27,7 @@ class Teacher::TestResultsController < Teacher::BaseController
 
   def subject_achievement_rate
     @student = Student.find(params[:id])
-    @subjects = Subject.pluck(:subject_name)
+    @subjects = current_teacher_teacher.subjects.pluck(:subject_name)
     @data_by_subject = {}
     @subjects.each do |subject|
       @data_by_subject[subject] = {

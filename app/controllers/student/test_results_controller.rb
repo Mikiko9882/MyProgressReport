@@ -48,7 +48,12 @@ class Student::TestResultsController < Student::BaseController
   end
   
   def subject_achievement_rate
-    @subjects = Subject.pluck(:subject_name)
+    teacher = Teacher.find_by(school_id: current_student.school_id)
+    if teacher.present?
+      @subjects = teacher.subjects.pluck(:subject_name)
+    else
+      @subjects = [] # teacherが存在しない場合は空の配列を代入する
+    end
     @data_by_subject = {}
     @subjects.each do |subject|
       @data_by_subject[subject] = {

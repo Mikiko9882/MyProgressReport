@@ -13,8 +13,12 @@
         <td><%= @student.name %></td>
       </tr>
       <tr>
-        <th scope="row"><%= Student.human_attribute_name(:email) %></th>
-        <td><%= @student.email %></td>
+        <th scope="row"><%= Student.human_attribute_name(:furigana) %></th>
+        <td><%= @student.furigana %></td>
+      </tr>
+      <tr>
+        <th scope="row"><%= Student.human_attribute_name(:student_number) %></th>
+        <td><%= @student.student_number %></td>
       </tr>
       <tr>
         <th scope="row"><%= Student.human_attribute_name(:grade_id)%></th>

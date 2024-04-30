@@ -8,16 +8,24 @@
         <div class="col-12">
           <div class="position-relative mb-4">
             <div class="form-group">
-              <%= f.label :email %>
-              <%= f.email_field :email, class: 'form-control' %>
+              <%= f.label :student_number %>
+              <%= f.text_field :student_number, class: 'form-control' %>
             </div>
           </div>
         </div>
-        <div class="col-12">
+        <div class="col-sm-6">
           <div class="position-relative mb-4">
             <div class="form-group">
               <%= f.label :name %>
               <%= f.text_field :name, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="position-relative mb-4">
+            <div class="form-group">
+              <%= f.label :furigana %>
+              <%= f.text_field :furigana, class: 'form-control' %>
             </div>
           </div>
         </div>

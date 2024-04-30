@@ -37,6 +37,38 @@ end
   )
 end
 
+subject_names = ["国語", "数学", "理科", "社会" , "英語"]
+
+Teacher.all.each do |teacher|
+  subject_names.each do |subject_name|
+    Subject.create!(
+      subject_name: subject_name,
+      teacher_id: teacher.id,
+    )
+  end
+end
+
+test_names = ["1学期中間テスト", "1学期期末テスト", "2学期中間テスト", "2学期期末テスト" , "3学期中間テスト", "3学期期末テスト", "小テスト", "実力テスト"]
+
+Teacher.all.each do |teacher|
+  test_names.each do |test_name|
+    TestName.create!(
+      test_name: test_name,
+      teacher_id: teacher.id,
+    )
+  end
+end
+
+max_scores = ["100", "50", "20", "10" , "5"]
+
+Teacher.all.each do |teacher|
+  max_scores.each do |max_score|
+    MaxScore.create!(
+      max_score: max_score,
+      teacher_id: teacher.id,
+    )
+  end
+end
 
 Grade.find_or_create_by!(name: "1年")
 Grade.find_or_create_by!(name: "2年")

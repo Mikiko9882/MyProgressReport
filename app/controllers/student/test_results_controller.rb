@@ -4,10 +4,16 @@ class Student::TestResultsController < Student::BaseController
   
   def index
     @q = current_student.test_results.ransack(params[:q])
-    @test_results = @q.result.order(created_at: :desc).page(params[:page])
+    @test_results = @q.result.order(created_at: :desc)
   end
   
   def new
+    teacher = Teacher.find_by(school_id: current_student.school_id)
+    if teacher.present?
+      @test_names = TestName.where(teacher_id: teacher.id)
+      @subjects = Subject.where(teacher_id: teacher.id)
+      @max_scores = MaxScore.where(teacher_id: teacher.id)
+    end
     @test_result = TestResult.new
   end
   

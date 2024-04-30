@@ -1,0 +1,52 @@
+<% content_for(:title, t('.title')) %>
+<div class="container d-flex flex-wrap justify-content-center justify-content-center pt-5">
+  <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
+    <h1 class="text-center text-xl-start"><h1><%= t('.title') %></h1></h1>
+    <%= form_with model: @test_result, local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="row">
+        <div class="col-12 mb-4">
+          <div class="position-relative mb-0">
+            <div class="form-group">
+              <%= f.label :test_name_id %>
+              <%= f.collection_select :test_name_id, TestName.all, :id, :test_name, {}, {class: "form-control custom-select-lg"} %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="position-relative mb-4">
+            <div class="form-group">
+              <%= f.label :max_score_id %>
+            <%= f.collection_select :max_score_id, MaxScore.all, :id, :max_score, {}, {class: "form-control custom-select-lg"} %>
+          </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="position-relative mb-4">
+            <div class="form-group">
+              <%= f.label :score %>
+              <%= f.number_field :score, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="position-relative mb-4">
+            <div class="form-group">
+              <%= f.label :subject_id %>
+              <%= f.collection_select :subject_id, Subject.all, :id, :subject_name, {}, {class: "form-control custom-select-lg"} %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="position-relative mb-4">
+            <div class="form-group">
+              <%= f.label :preparation_time_minutes %>
+              <%= f.number_field :preparation_time_minutes, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= f.submit '登録する', class: "btn btn-primary shadow-primary btn-lg w-100" %>
+    <% end %>
+  </div>
+</div>

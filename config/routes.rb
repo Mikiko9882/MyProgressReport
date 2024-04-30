@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :teachers
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -47,6 +46,23 @@ Rails.application.routes.draw do
                                 
       resources :students, only: %i[index edit update show destroy]
       resources :test_results, only: %i[index edit update show destroy] do
+        collection do
+          get :subject_achievement_rate
+        end
+      end
+    end
+
+     # 生徒用画面
+     scope module: :student do
+      root to: 'tops#index', as: 'student_root'
+
+      devise_for :students,
+                 only: %i[session password registration confirmation],
+                 controllers: { passwords: 'students/passwords',
+                                sessions: 'students/sessions',
+                                registrations: 'students/registrations',
+                                confirmations: 'students/confirmations' }
+      resources :test_results, except: [:show] do
         collection do
           get :subject_achievement_rate
         end

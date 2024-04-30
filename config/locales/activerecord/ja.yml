@@ -38,7 +38,8 @@ ja:
         max_score: '満点'
       student:
         name: '名前'
-        email: 'メールアドレス'
+        student_number: '学生番号'
+        furigana: 'ふりがな'
         grade_id: '学年'
         student_class_id: 'クラス'
         school_id: '学校名'

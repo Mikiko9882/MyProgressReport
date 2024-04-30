@@ -54,7 +54,7 @@ Rails.application.routes.draw do
 
      # 生徒用画面
      scope module: :student do
-      root to: 'test_results#index', as: 'student_root'
+      root to: 'tops#index', as: 'student_root'
 
       devise_for :students,
                  only: %i[session password registration confirmation],

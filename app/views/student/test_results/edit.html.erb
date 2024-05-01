@@ -9,7 +9,7 @@
           <div class="position-relative mb-0">
             <div class="form-group">
               <%= f.label :test_name_id %>
-              <%= f.collection_select :test_name_id, TestName.all, :id, :test_name, {}, {class: "form-control custom-select-lg"} %>
+              <%= f.collection_select :test_name_id, @test_names, :id, :test_name, {}, {class: "form-control custom-select-lg"} %>
             </div>
           </div>
         </div>
@@ -17,7 +17,7 @@
           <div class="position-relative mb-4">
             <div class="form-group">
               <%= f.label :max_score_id %>
-            <%= f.collection_select :max_score_id, MaxScore.all, :id, :max_score, {}, {class: "form-control custom-select-lg"} %>
+            <%= f.collection_select :max_score_id, @max_scores, :id, :max_score, {}, {class: "form-control custom-select-lg"} %>
           </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
           <div class="position-relative mb-4">
             <div class="form-group">
               <%= f.label :subject_id %>
-              <%= f.collection_select :subject_id, Subject.all, :id, :subject_name, {}, {class: "form-control custom-select-lg"} %>
+              <%= f.collection_select :subject_id, @subjects, :id, :subject_name, {}, {class: "form-control custom-select-lg"} %>
             </div>
           </div>
         </div>

@@ -28,7 +28,11 @@ class Student::TestResultsController < Student::BaseController
   end
   
   def edit
+    teacher = Teacher.find_by(school_id: current_student.school_id)
     @test_result = current_student.test_results.find(params[:id])
+    @test_names = TestName.where(teacher_id: teacher.id)
+    @subjects = Subject.where(teacher_id: teacher.id)
+    @max_scores = MaxScore.where(teacher_id: teacher.id)
   end
   
   def update

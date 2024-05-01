@@ -42,25 +42,20 @@ class Teacher::TestResultsController < Teacher::BaseController
     @students = Student.where(school_id: school_id, grade: 1..3)
     @ranking = {}
   
-    (1..3).each do |grade|
-      students_in_grade = @students.where(grade: grade)
-  
-      # 生徒ごとに平均達成率を計算します
+    selected_grade = params[:grade] # 選択された学年
+
+    if selected_grade.present? # 学年が選択されている場合
+      students_in_grade = @students.where(grade: selected_grade.to_i)
+
       average_achievement_rates = {}
       students_in_grade.each do |student|
-        # 生徒のテスト結果のachievement_rateを配列として取得
         achievement_rates = student.test_results.pluck(:achievement_rate)
-        
-        # 平均値を計算し、average_achievement_ratesに追加
         average_achievement_rate = achievement_rates.sum / achievement_rates.size.to_f
         average_achievement_rates[student] = average_achievement_rate
       end
-  
-      # 平均達成率で生徒を降順にソートします
+
       ranked_students = average_achievement_rates.sort_by { |_student, rate| rate.nan? ? 0 : rate }.reverse
-  
-      # ランキングを作成し、@rankingに追加します
-      @ranking[grade] = ranked_students.map.with_index { |(student, rate), index| { rank: index + 1, student: student, average_achievement_rate: rate } }
+      @ranking[selected_grade] = ranked_students.map.with_index { |(student, rate), index| { rank: index + 1, student: student, average_achievement_rate: rate } }
     end
   end
 

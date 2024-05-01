@@ -48,6 +48,7 @@ Rails.application.routes.draw do
       resources :test_results, only: %i[index edit update show destroy] do
         collection do
           get :subject_achievement_rate
+          get :average_achievement_rate_ranking
         end
       end
     end

@@ -7,7 +7,7 @@ class Student < ApplicationRecord
   has_many :test_results, dependent: :destroy
 
   validates :name, presence: true
-  validates :furigana, presence: true, format: { with: /\A[ぁ-んー－]+\z/ }
+  validates :furigana, presence: true, format: { with: /\A[ぁ-んー－　]+\z/, allow_blank: true }
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

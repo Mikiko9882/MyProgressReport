@@ -145,6 +145,8 @@ ja:
         title: 'テスト結果詳細'
       subject_achievement_rate:
         title: 'グラフで見る'
+      average_achievement_rate_ranking:
+        title: '平均達成率ランキング'
   rooms:
     index:
       title: 'メッセージ一覧'

@@ -58,11 +58,9 @@ Rails.application.routes.draw do
       root to: 'test_results#index', as: 'student_root'
 
       devise_for :students,
-                 only: %i[session password registration confirmation],
-                 controllers: { passwords: 'students/passwords',
-                                sessions: 'students/sessions',
-                                registrations: 'students/registrations',
-                                confirmations: 'students/confirmations' }
+                 only: %i[session registration ],
+                 controllers: { sessions: 'students/sessions',
+                                registrations: 'students/registrations' }
       resources :test_results, except: [:show] do
         collection do
           get :subject_achievement_rate

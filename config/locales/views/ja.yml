@@ -58,6 +58,8 @@ ja:
     passwords:
       new:
         title: 'パスワードの再設定'
+      edit:
+        title: 'パスワード再設定'
   admin:
     schools:
       new:

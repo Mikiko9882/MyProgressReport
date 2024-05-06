@@ -52,7 +52,6 @@ gem 'rails-i18n'
 gem 'devise'
 
 gem 'devise-i18n'
-gem 'devise-i18n-views'
 
 #検索機能を実装
 gem 'ransack'
@@ -68,6 +67,8 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
 
   gem 'faker'
+
+  gem 'letter_opener_web'
 end
 
 group :development do

@@ -8,22 +8,27 @@
       <%= render "admins/shared/error_messages", resource: resource %>
       <%= f.hidden_field :reset_password_token %>
 
-      <div class="field">
-        <%= f.label :password, "New password" %><br />
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-        <% end %>
-        <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+      <div class="position-relative mb-4">
+        <div class="form-group">
+          <%= f.label :新しいパスワード %><br />
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> 文字以上)</em><br />
+          <% end %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= f.label :password_confirmation, "Confirm new password" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <div class="mb-4">
+        <div class="form-group">
+          <%= f.label :password_confirmation, "新しいパスワード(確認用)" %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Change my password" %>
+      <div class="actions mb-4">
+        <%= f.submit "パスワードを変更", class: 'btn btn-primary shadow-primary btn-lg w-100' %>
       </div>
+
     <% end %>
 
     <%= render "admins/shared/links" %>

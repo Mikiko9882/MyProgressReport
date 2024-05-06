@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -58,11 +59,9 @@ Rails.application.routes.draw do
       root to: 'test_results#index', as: 'student_root'
 
       devise_for :students,
-                 only: %i[session password registration confirmation],
-                 controllers: { passwords: 'students/passwords',
-                                sessions: 'students/sessions',
-                                registrations: 'students/registrations',
-                                confirmations: 'students/confirmations' }
+                 only: %i[session registration ],
+                 controllers: { sessions: 'students/sessions',
+                                registrations: 'students/registrations' }
       resources :test_results, except: [:show] do
         collection do
           get :subject_achievement_rate

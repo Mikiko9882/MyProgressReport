@@ -55,6 +55,11 @@ ja:
     sessions:
       new:
         title: '管理者用ログイン'
+    passwords:
+      new:
+        title: 'パスワードの再設定'
+      edit:
+        title: 'パスワード再設定'
   admin:
     schools:
       new:

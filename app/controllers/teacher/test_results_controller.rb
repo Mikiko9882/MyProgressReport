@@ -18,7 +18,9 @@ class Teacher::TestResultsController < Teacher::BaseController
     end
   end
 
-  def show; end
+  def show
+    @target = Target.find_by(test_name_id: @test_result.test_name_id, subject_id: @test_result.subject_id)
+  end
 
   def destroy
     @test_result.destroy!

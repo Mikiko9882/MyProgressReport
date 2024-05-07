@@ -9,28 +9,28 @@
     </div>
     <table class="table table-bordered bg-white">
       <tr>
-        <th scope="row"><%= Student.human_attribute_name(:name) %></th>
-        <td><%= @student.name %></td>
+        <th scope="row" style="text-align: center;"><%= Student.human_attribute_name(:name) %></th>
+        <td style="text-align: center;"><%= @student.name %></td>
       </tr>
       <tr>
-        <th scope="row"><%= Student.human_attribute_name(:furigana) %></th>
-        <td><%= @student.furigana %></td>
+        <th scope="row" style="text-align: center;"><%= Student.human_attribute_name(:furigana) %></th>
+        <td style="text-align: center;"><%= @student.furigana %></td>
       </tr>
       <tr>
-        <th scope="row"><%= Student.human_attribute_name(:student_number) %></th>
-        <td><%= @student.student_number %></td>
+        <th scope="row" style="text-align: center;"><%= Student.human_attribute_name(:student_number) %></th>
+        <td style="text-align: center;"><%= @student.student_number %></td>
       </tr>
       <tr>
-        <th scope="row"><%= Student.human_attribute_name(:grade_id)%></th>
-        <td><%= @student.grade.name %></td>
+        <th scope="row" style="text-align: center;"><%= Student.human_attribute_name(:grade_id)%></th>
+        <td style="text-align: center;"><%= @student.grade.name %></td>
       </tr>
       <tr>
-        <th scope="row"><%= Student.human_attribute_name(:student_class_id)%></th>
-        <td><%= @student.student_class.name %></td>
+        <th scope="row" style="text-align: center;"><%= Student.human_attribute_name(:student_class_id)%></th>
+        <td style="text-align: center;"><%= @student.student_class.name %></td>
       </tr>
       <tr>
-        <th scope="row"><%= '達成率の平均値'%></th>
-        <td><%= @average_achievement_rate.present? ? number_to_percentage(@average_achievement_rate, precision: 0) : 'N/A' %>
+        <th scope="row" style="text-align: center;"><%= '達成率の平均値'%></th>
+        <td style="text-align: center;"><%= @average_achievement_rate.present? ? number_to_percentage(@average_achievement_rate, precision: 0) : 'N/A' %>
       <tr>
     </table>
   </div>

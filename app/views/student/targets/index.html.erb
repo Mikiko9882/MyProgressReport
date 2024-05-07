@@ -1,0 +1,65 @@
+<% content_for(:title, t('.title')) %>
+<nav class="container mt-lg-4 pt-5" aria-label="breadcrumb">
+  
+</nav>
+<!-- Breadcrumb -->
+<nav class="container mt-lg-4 pt-5" aria-label="breadcrumb"></nav>
+<!-- Page content -->
+<section class="container mt-4 mb-lg-5 pt-lg-2 pb-5">
+  <!-- Page title + Layout switcher + Search form -->
+  <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
+    <div class="col-lg-5 col-md-4">
+      <h1 class="mb-2 mb-md-0"><%= t '.title' %></h1>
+    </div>
+    <div class="col-lg-7 col-md-8">
+      <%= search_form_for @q, url: targets_path, html: { class: "row align-items-end" } do |f| %>
+        <div class="col-lg-5 col-sm-6 mb-2">
+          <div class="input-group">
+            <%= f.select :test_name_id_eq, TestName.all.map{|tn| [tn.test_name, tn.id]}, { include_blank: 'テスト名で検索' }, { class: 'form-select' } %>
+          </div>
+        </div>
+        <div class="col-lg-5 col-sm-6 mb-2">
+          <div class="input-group">
+            <%= f.select :subject_id_eq, Subject.all.map{|s| [s.subject_name, s.id]}, { include_blank: '教科名で検索' }, { class: 'form-select' } %>
+          </div>
+        </div>
+        <div class="col-lg-2 col-sm-12">
+          <div class="input-group">
+            <%= f.submit "検索", class: 'btn btn-primary' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+    <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-md-4 gy-2">
+      <% @targets.each do |target| %>
+        <!-- Item -->
+        <div class="col pb-3">
+          <article class="card border-0 shadow-sm h-100">
+            <div class="card-body pb-4">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <li class="list-inline-item">
+                  <%= l target.created_at, format: :long %>
+                </li>
+                <div class="d-flex gap-2">
+                  <%= link_to "Edit", edit_target_path(id: target.id), class: "badge fs-sm text-nav bg-secondary text-decoration-none" %>
+                  <%= button_to "Destroy", target_path(id: target.id), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "bi bi-trash3" %>
+                </div>
+              </div>
+              <h4 class= "mb-3">
+                <%= TestName.find(target.test_name_id).test_name %>
+                <%= Subject.find(target.subject_id).subject_name %>
+              </h4>
+              <p class="h5 mb-3">
+                <p><strong>目標学習時間</strong><span class="fs-lg fw-semibold me-2"> <%= target.display_preparation_time %></span></p>
+              <p class="h5 mb-3">
+                <p><strong>目標点数</strong><span class="fs-lg fw-semibold text-danger me-2"> <%= target.target_score %></span></p>
+                <p><strong>満点</strong><span class="fs-lg fw-semibold text-danger me-2"> <%= MaxScore.find(target.max_score_id).max_score %></span></p>
+                <p><strong>目標達成率</strong><span class="fs-lg fw-semibold text-danger me-2"> <%= target.target_achievement_rate %>%</span></p>
+            </div>
+          </article>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

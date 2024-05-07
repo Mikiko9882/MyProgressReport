@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_30_043338) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_07_061331) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -90,6 +90,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_043338) do
     t.index ["teacher_id"], name: "index_subjects_on_teacher_id"
   end
 
+  create_table "targets", force: :cascade do |t|
+    t.bigint "student_id"
+    t.bigint "test_name_id"
+    t.bigint "subject_id"
+    t.bigint "max_score_id"
+    t.integer "target_score"
+    t.integer "target_preparation_time_minutes"
+    t.float "target_achievement_rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["max_score_id"], name: "index_targets_on_max_score_id"
+    t.index ["student_id"], name: "index_targets_on_student_id"
+    t.index ["subject_id"], name: "index_targets_on_subject_id"
+    t.index ["test_name_id"], name: "index_targets_on_test_name_id"
+  end
+
   create_table "teachers", force: :cascade do |t|
     t.string "name"
     t.string "login_id", default: "", null: false
@@ -136,6 +152,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_043338) do
   add_foreign_key "students", "schools"
   add_foreign_key "students", "student_classes"
   add_foreign_key "subjects", "teachers"
+  add_foreign_key "targets", "max_scores"
+  add_foreign_key "targets", "students"
+  add_foreign_key "targets", "subjects"
+  add_foreign_key "targets", "test_names"
   add_foreign_key "teachers", "schools"
   add_foreign_key "test_names", "teachers"
   add_foreign_key "test_results", "max_scores"

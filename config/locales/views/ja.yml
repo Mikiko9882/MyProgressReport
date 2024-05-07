@@ -118,6 +118,9 @@ ja:
         title: 'テスト目標入力'
       edit:
         title: '目標編集'
+    comparisons:
+      index:
+        title: "目標とテスト結果の比較"
   teachers:
     sessions:
       new:

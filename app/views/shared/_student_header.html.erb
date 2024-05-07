@@ -29,11 +29,15 @@
           テストを登録する
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li><%= link_to 'テスト一覧', test_results_path, class: 'dropdown-item' %></li>
-          <li><%= link_to 'テストを作成する', new_test_result_path, class: 'dropdown-item' %></li>
+          <li><%= link_to 'テスト結果一覧', test_results_path, class: 'dropdown-item' %></li>
+          <li><%= link_to 'テスト結果を登録する', new_test_result_path, class: 'dropdown-item' %></li>
           <li><%= link_to 'グラフで見る', subject_achievement_rate_test_results_path, class: 'dropdown-item' %></li>
         </ul>
       </div>
+    </div>
+
+    <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">
+      <%= link_to '目標とテスト結果の比較', comparisons_index_path, class: 'btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex' %>
     </div>
 
     <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">

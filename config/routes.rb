@@ -68,6 +68,7 @@ Rails.application.routes.draw do
         end
       end
       resources :targets, except: [:show]
+      get 'comparisons/index'
     end
   end
 end

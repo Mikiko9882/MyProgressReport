@@ -12,6 +12,7 @@ ja:
       subject: '教科'
       max_score: '満点'
       test_name: 'テスト名'
+      target: '目標'
     attributes:
       admin:
         password: 'パスワード'
@@ -52,9 +53,19 @@ ja:
         max_score: "満点"
         achievement_rate: "達成率"
         created_at: "作成日時"
-        test_date: "テスト実施日"
-        test_type: "教科名"
         preparation_time_minutes: "学習時間" 
+        display_preparation_time: "学習時間"
+        test_name_id: "テスト名"
+        max_score_id: "満点"
+        subject_id: "教科"
+      target:
+        test_name: "テスト名"
+        target_score: "目標"
+        max_score: "満点"
+        target_achievement_rate: "達成率"
+        created_at: "作成日時"
+        test_date: "テスト実施日"
+        target_preparation_time_minutes: "目標学習時間" 
         display_preparation_time: "学習時間"
         test_name_id: "テスト名"
         max_score_id: "満点"

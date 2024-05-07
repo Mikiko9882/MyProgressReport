@@ -61,7 +61,9 @@ class Student::TestResultsController < Student::BaseController
     @data_by_subject = {}
     @subjects.each do |subject|
       @data_by_subject[subject] = {
-        line_chart_data: current_student.test_results.achievement_rate_by_subject(subject).map.with_index { |(test_name, achievement_rate), index| ["#{test_name} (#{index + 1})", achievement_rate] },
+        line_chart_data: current_student.test_results.achievement_rate_by_subject(subject)
+                                .reverse # データを逆順にする
+                                .map.with_index { |(test_name, achievement_rate), index| ["#{test_name} (#{index + 1})", achievement_rate] },
         scatter_chart_data: current_student.test_results.scatter_chart_data_by_subject(subject)
       }
     end

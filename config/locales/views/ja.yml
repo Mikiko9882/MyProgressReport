@@ -106,6 +106,21 @@ ja:
         title: '点数編集'
       subject_achievement_rate:
         title: 'グラフで見る'
+    targets:
+      index:
+        title: "目標一覧"
+        test_name: "テスト名"
+        target_score: "得点"
+        max_score: "満点"
+        target_achievement_rate: "目標達成率"
+        target_percentage_sign: "%"
+      new:
+        title: 'テスト目標入力'
+      edit:
+        title: '目標編集'
+    comparisons:
+      index:
+        title: "目標とテスト結果の比較"
   teachers:
     sessions:
       new:

@@ -24,7 +24,7 @@ class Teacher::TestResultsController < Teacher::BaseController
 
   def destroy
     @test_result.destroy!
-    redirect_to teacher_test_results_path, success: t('defaults.message.deleted', item: TestResult.model_name.human)
+    redirect_back(fallback_location: teacher_test_results_path, success: t('defaults.message.deleted', item: TestResult.model_name.human))
   end
 
   def subject_achievement_rate

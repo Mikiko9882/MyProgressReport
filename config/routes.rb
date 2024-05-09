@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'privacy_policy', to: 'privacy_policy#show'
 
   # システム管理者用画面
-  namespace :admin, path: 'aaaaaaaa' do
+  namespace :admin, path: 'admin' do
     root to: 'schools#index', as: 'root'
 
     devise_for :admins,

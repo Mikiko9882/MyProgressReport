@@ -29,7 +29,9 @@
           <thead>
             <tr>
               <th>順位</th>
+              <th>学籍番号</th>
               <th>生徒名</th>
+              <th>ふりがな</th>
               <th>学年</th>
               <th>平均達成率</th>
             </tr>
@@ -38,9 +40,11 @@
             <% students.each do |entry| %>
               <tr>
                 <td><%= entry[:rank] %></td>
+                <td><%= entry[:student].student_number %></td>
                 <td><%= entry[:student].name %></td>
+                <td><%= entry[:student].furigana %></td>
                 <td><%= entry[:student].grade.name %></td>
-                <td><%= entry[:average_achievement_rate] %></td>
+                <td><%= entry[:average_achievement_rate] %>%</td>
               </tr>
             <% end %>
           </tbody>

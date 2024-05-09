@@ -58,3 +58,5 @@ doc/
 
 # Ignore bundler gems.
 /vendor/bundle
+
+/db/seeds/production.rb

@@ -13,8 +13,7 @@ My Progress Reportは、テスト成績を効果的に管理し、成績を管�
 
 |トップ画面| 👤 学校登録機能 |
 |:-:|:-:|
-|[![Image from Gyazo](https://i.gyazo.com/3ea6ee8e367ae2dfbff75f05ed748b0c.gif)](https://gyazo.com/3ea6ee8e367ae2dfbff75f05ed748b0c)
-|[![Image from Gyazo](https://i.gyazo.com/b5584e5be81eba58fee83a595bed1361.png)](https://gyazo.com/b5584e5be81eba58fee83a595bed1361)|
+|[![Image from Gyazo](https://i.gyazo.com/3ea6ee8e367ae2dfbff75f05ed748b0c.gif)](https://gyazo.com/3ea6ee8e367ae2dfbff75f05ed748b0c)|[![Image from Gyazo](https://i.gyazo.com/b5584e5be81eba58fee83a595bed1361.png)](https://gyazo.com/b5584e5be81eba58fee83a595bed1361)|
 |このアプリで学生、生徒ができること、管理者へのログインを誘導しています。|まずは、学校を登録します。学校が登録されると自動で学校コードが発行されます。それは、先生や生徒がログインする時の学校コードになります。|
 
 ## サービスの利用イメージ

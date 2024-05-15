@@ -24,7 +24,12 @@ My Progress Reportは、テスト成績を効果的に管理し、成績を管�
 | 👩‍🏫 テスト要素追加機能 | 👩‍🏫 生徒一覧機能 |
 |:-:|:-:|
 |[![Image from Gyazo](https://i.gyazo.com/0ab1c7e326794c2adc2df591a636351b.gif)](https://gyazo.com/0ab1c7e326794c2adc2df591a636351b)|[![Image from Gyazo](https://i.gyazo.com/b2220df83fb74d606e52a7f6aa54c6bc.gif)](https://gyazo.com/b2220df83fb74d606e52a7f6aa54c6bc)|
-|生徒一覧機能から、学校の生徒一覧を確認することができます。そこから生徒の詳細見たり、編集を行ったりすることができます。|
+|テストの科目や、テスト名、満点などテストの要素を追加することができます。|生徒一覧機能から、学校の生徒一覧を確認することができます。そこから生徒の詳細見たり、編集を行ったりすることができます。|
+
+| 👩‍🏫 テスト結果一覧機能 | 👩‍🏫 平均達成率ランキング |
+|:-:|:-:|
+|[![Image from Gyazo](https://i.gyazo.com/846f3a2fad7484cad955719663405c58.gif)](https://gyazo.com/846f3a2fad7484cad955719663405c58)|[![Image from Gyazo](https://i.gyazo.com/742fc40a9204eb8b7574156b60815c8e.gif)](https://gyazo.com/742fc40a9204eb8b7574156b60815c8e)|
+|テスト結果一覧画面で、生徒の成長をグラフで確認できたり、そのテストの生徒の目標などの詳細情報、編集を行うことができます。|全てのテストの平均達成率を出し、学年ごとのランキングを確認することができます。|
 
 ## サービスの利用イメージ
 * 学生

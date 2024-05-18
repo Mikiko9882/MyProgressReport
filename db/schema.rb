@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_17_081301) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_18_110633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,7 +71,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_17_081301) do
     t.bigint "student_class_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["grade_id"], name: "index_students_on_grade_id"
+    t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
     t.index ["school_id"], name: "index_students_on_school_id"
     t.index ["student_class_id"], name: "index_students_on_student_class_id"
     t.index ["student_number"], name: "index_students_on_student_number", unique: true
@@ -107,7 +112,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_17_081301) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "school_id", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["login_id"], name: "index_teachers_on_login_id", unique: true
+    t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
     t.index ["school_id"], name: "index_teachers_on_school_id"
   end
 

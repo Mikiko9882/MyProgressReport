@@ -58,4 +58,4 @@ My Progress Reportは、テスト成績を効果的に管理し、成績を管�
 | インフラ | Heroku |
 
 ### ER図
-[![Image from Gyazo](https://i.gyazo.com/844c9469763209f38236f0d1a6132249.png)](https://gyazo.com/844c9469763209f38236f0d1a6132249)
+[![Image from Gyazo](https://i.gyazo.com/3ecf7029bb650f3395d4483793381116.png)](https://gyazo.com/3ecf7029bb650f3395d4483793381116)

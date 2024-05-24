@@ -5,14 +5,9 @@
         My Progress Report
       <% end %>
     </a>
-    <div id="navbarNav" class="offcanvas offcanvas-end">
-      <div class="offcanvas-header border-top">
-        <%= link_to (t 'defaults.logout'), destroy_student_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex', data: {turbo_method: :delete} %>
-      </div>      
-    </div>
-
-    <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">
-      <div class="dropdown">
+    
+    <div class="d-flex ms-auto">
+      <div class="dropdown me-3">
         <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
           目標を設定
         </button>
@@ -23,25 +18,19 @@
       </div>
     </div>
 
-    <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-          テストを登録する
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li><%= link_to 'テスト結果一覧', test_results_path, class: 'dropdown-item' %></li>
-          <li><%= link_to 'テスト結果を登録する', new_test_result_path, class: 'dropdown-item' %></li>
-          <li><%= link_to 'グラフで見る', subject_achievement_rate_test_results_path, class: 'dropdown-item' %></li>
-        </ul>
-      </div>
+    <div class="dropdown me-3">
+      <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        登録する
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><%= link_to 'テスト結果一覧', test_results_path, class: 'dropdown-item' %></li>
+        <li><%= link_to 'テスト結果を登録する', new_test_result_path, class: 'dropdown-item' %></li>
+        <li><%= link_to 'グラフで見る', subject_achievement_rate_test_results_path, class: 'dropdown-item' %></li>
+      </ul>
     </div>
 
-    <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">
-      <%= link_to '目標とテスト結果の比較', comparisons_index_path, class: 'btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex' %>
-    </div>
+    <%= link_to '比較する', comparisons_index_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex me-3' %>
 
-    <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">
-      <%= link_to (t 'defaults.logout'), destroy_student_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex', data: {turbo_method: :delete} %>
-    </div>
+    <%= link_to (t 'defaults.logout'), destroy_student_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex', data: {turbo_method: :delete} %>
   </div>
 </header>

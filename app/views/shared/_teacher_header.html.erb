@@ -5,16 +5,11 @@
         My Progress Report
       <% end %>
     </a>
-    <div id="navbarNav" class="offcanvas offcanvas-end">
-      <div class="offcanvas-header border-top">
-        <%= link_to (t 'defaults.logout'), destroy_teacher_teacher_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex', data: {turbo_method: :delete} %>
-      </div>      
-    </div>
 
-    <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">
-      <div class="dropdown">
+    <div class="d-flex ms-auto">
+      <div class="dropdown me-3">
         <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-          テスト要素を追加
+          要素を追加
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <li><%= link_to '追加要素一覧', teacher_subjects_path, class: 'dropdown-item' %><li>
@@ -25,24 +20,17 @@
       </div>
     </div>
 
-    <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-          テスト結果一覧
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li><%= link_to 'テスト結果一覧', teacher_test_results_path, class: 'dropdown-item' %><li>
-          <li><%= link_to '平均達成率ランキング', average_achievement_rate_ranking_teacher_test_results_path, class: 'dropdown-item' %><li>
-        </ul>
-      </div>
+    <div class="dropdown me-3">
+      <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        テスト結果一覧
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><%= link_to 'テスト結果一覧', teacher_test_results_path, class: 'dropdown-item' %><li>
+        <li><%= link_to '平均達成率ランキング', average_achievement_rate_ranking_teacher_test_results_path, class: 'dropdown-item' %><li>
+      </ul>
     </div>
 
-    <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">
-      <%= link_to '生徒一覧', teacher_students_path, class: 'btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex' %>
-    </div>
-
-    <div class="form-check from-switch mode-switch pe-lg-1 ms-auto me-0" data-bs-toggle="mode">
-      <%= link_to (t 'defaults.logout'), destroy_teacher_teacher_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex', data: {turbo_method: :delete} %>
-    </div>
+    <%= link_to '生徒一覧', teacher_students_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex me-3' %>
+    <%= link_to (t 'defaults.logout'), destroy_teacher_teacher_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex me-3', data: {turbo_method: :delete} %>
   </div>
 </header>

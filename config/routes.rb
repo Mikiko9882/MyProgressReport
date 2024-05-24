@@ -34,6 +34,8 @@ Rails.application.routes.draw do
                only: %i[session password],
                controllers: { passwords: 'sample_admins/passwords',
                               sessions: 'sample_admins/sessions' }
+                              
+    resources :sample_schools
   end
 
   #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

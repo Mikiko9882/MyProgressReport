@@ -89,7 +89,7 @@ ja:
       new:
         title: 'お試し用ログイン'
   sample_admin:
-    schools:
+    sample_schools:
       new:
         title: '学校を登録する'
       index:

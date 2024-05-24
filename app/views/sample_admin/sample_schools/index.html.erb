@@ -1,0 +1,48 @@
+<% content_for(:title, t('.title')) %>
+<!-- Breadcrumb -->
+<nav class="container mt-lg-4 pt-5" aria-label="breadcrumb"></nav>
+<!-- Page content -->
+<section class="container mt-4 mb-lg-5 pt-lg-2 pb-5">
+  <!-- Page title + Layout switcher + Search form -->
+  <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
+    <div class="col-lg-5 col-md-4">
+      <h1 class="mb-2 mb-md-0"><%= t '.title' %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>学校名</th>
+          <th>住所</th>
+          <th>電話番号</th>
+          <th>メールアドレス</th>
+          <th>Webサイト</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @sample_schools.each do |sample_school| %>
+            <tr>
+              <td><%= sample_school.name %></td>
+              <td><%= sample_school.address %></td>
+              <td><%= sample_school.phone_number %></td>
+              <td><%= sample_school.email %></td>
+              <td><%= sample_school.website %></td>
+              <% if sample_school.sample_admin_id == current_sample_admin_sample_admin.id %>
+                <td>
+                  <div class="btn-group" role="group">
+                    <%= link_to t('defaults.show'), sample_admin_sample_school_path(sample_school), class: 'btn btn-info me-2' %>
+                    <%= link_to t('defaults.edit'), edit_sample_admin_sample_school_path(sample_school), class: 'btn btn-success me-2' %>
+                    <%= button_to t('defaults.delete'), sample_admin_sample_school_path(sample_school), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: 'btn btn-danger' %>
+                  </div>  
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

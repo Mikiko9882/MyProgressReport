@@ -28,6 +28,12 @@ ja:
         phone_number: '電話番号'
         email: 'メールアドレス'
         website: 'ウェブサイト'
+      sample_school:
+        name: '学校名'
+        address: '住所'
+        phone_number: '電話番号'
+        email: 'メールアドレス'
+        website: 'ウェブサイト'
       student_class: 
         name: 'クラス名'
       teacher:

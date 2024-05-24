@@ -35,7 +35,9 @@ Rails.application.routes.draw do
                controllers: { passwords: 'sample_admins/passwords',
                               sessions: 'sample_admins/sessions' }
                               
-    resources :sample_schools
+    resources :sample_schools do
+      resources :sample_teachers, param: :code, only: %i[show new create edit update destroy]
+    end
   end
 
   #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -65,6 +67,8 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    devise_for :sample_teachers
 
      # 生徒用画面
      scope module: :student do

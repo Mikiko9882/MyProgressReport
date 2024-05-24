@@ -41,6 +41,11 @@ ja:
         login_id: 'ログインID'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
+      sample_teacher:
+        name: '名前'
+        login_id: 'ログインID'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
       subject:
         subject_name: '科目名'
       test_name:

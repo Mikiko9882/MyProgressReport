@@ -1,5 +1,6 @@
 class SampleSchool < ApplicationRecord
   belongs_to :sample_admin
+  has_many :sample_teachers, dependent: :destroy
 
   before_validation :generate_unique_code, on: :create
 

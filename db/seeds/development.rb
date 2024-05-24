@@ -5,7 +5,7 @@
   )
 end
 
-SampleAdmin.create!(
+sample_admin = SampleAdmin.create!(
   email: "sample@example.com",
   password: "12345678"
 )
@@ -22,6 +22,16 @@ SampleAdmin.create!(
   )
 end
 
+sample_school = SampleSchool.create!(
+  name: 'Sample School',
+  address: 'Sample Address',
+  phone_number: '1234567890',
+  email: 'school@example.com',
+  website: 'http://www.example.com',
+  code: 'sample_code',
+  sample_admin_id: sample_admin.id,
+)
+
 class_names = ["1組", "2組", "3組", "4組", "5組", "6組", "7組", "8組", "9組", "10組"]
 
 School.all.each do |school|
@@ -33,6 +43,13 @@ School.all.each do |school|
   end
 end
 
+class_names.each do |class_name|
+  SampleStudentClass.create!(
+    name: class_name,
+    sample_school_id: sample_school.id
+  )
+end
+
 30.times do
   Teacher.create!(
     name: Faker::Name.name,
@@ -41,6 +58,13 @@ end
     school_id: School.pluck(:id).sample, # 学校のIDは存在するIDからランダムに選択してください
   )
 end
+
+SampleTeacher.create!(
+  name: "sample先生",
+  login_id: "sample1234",
+  password: '12345678', 
+  sample_school_id: sample_school.id
+)
 
 subject_names = ["国語", "数学", "理科", "社会" , "英語"]
 

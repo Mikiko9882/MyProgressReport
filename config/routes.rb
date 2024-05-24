@@ -35,9 +35,9 @@ Rails.application.routes.draw do
                controllers: { passwords: 'sample_admins/passwords',
                               sessions: 'sample_admins/sessions' }
                               
-    resources :sample_schools do
-      resources :sample_teachers, param: :code, only: %i[show new create edit update destroy]
-      resources :sample_student_classes, param: :code, only: %i[show new create edit update destroy]
+    resources :sample_schools, only: [:index, :show] do
+      resources :sample_student_classes, param: :code, only: %i[show]
+      resources :sample_teachers, param: :code, only: %i[show]
     end
   end
 

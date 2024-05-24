@@ -84,6 +84,20 @@ ja:
         title: '先生詳細'
       edit:
         title: '内容を編集'
+  sample_admins:
+    sessions:
+      new:
+        title: 'お試し用ログイン'
+  sample_admin:
+    schools:
+      new:
+        title: '学校を登録する'
+      index:
+        title: '学校一覧'
+      show:
+        title: '学校詳細'
+      edit:
+        title: '内容を編集'
   students:
     sessions:
       new:

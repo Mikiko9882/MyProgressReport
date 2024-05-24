@@ -26,6 +26,16 @@ Rails.application.routes.draw do
     end
   end
 
+  # サンプルシステム管理者用画面
+  namespace :sample_admin, path: 'sample_admin' do
+    root to: 'tops#index', as: 'root'
+
+    devise_for :sample_admins,
+               only: %i[session password],
+               controllers: { passwords: 'sample_admins/passwords',
+                              sessions: 'sample_admins/sessions' }
+  end
+
   #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   # マルチテナントの切り分け
   scope '/:school_code' do

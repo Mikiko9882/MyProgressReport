@@ -18,6 +18,10 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         email: 'メールアドレス'
+      sample_admin:
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        email: 'メールアドレス'
       school:
         name: '学校名'
         address: '住所'

@@ -5,6 +5,11 @@
   )
 end
 
+SampleAdmin.create!(
+  email: "sample@example.com",
+  password: "12345678"
+)
+
 6.times do
   School.create!(
     name: Faker::Educator.secondary_school,

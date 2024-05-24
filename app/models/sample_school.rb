@@ -1,6 +1,8 @@
 class SampleSchool < ApplicationRecord
   belongs_to :sample_admin
+  has_many :sample_student_classes, dependent: :restrict_with_exception
   has_many :sample_teachers, dependent: :destroy
+  has_many :sample_students, dependent: :destroy
 
   before_validation :generate_unique_code, on: :create
 

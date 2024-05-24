@@ -13,7 +13,7 @@
     <%= link_to t('defaults.edit'), edit_sample_admin_sample_school_path(@sample_school), class: 'btn btn-success me-2' %>
     <%= button_to t('defaults.delete'), sample_admin_sample_school_path(@sample_school), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: 'btn btn-danger me-2' %>
     <%= link_to '先生を追加する', new_sample_admin_sample_school_sample_teacher_path(@sample_school), class: 'btn btn-primary me-2' %>
-    <%= link_to 'クラスを追加する', '#', class: 'btn btn-primary me-2' %>
+    <%= link_to 'クラスを追加する', new_sample_admin_sample_school_sample_student_class_path(@sample_school), class: 'btn btn-primary me-2' %>
     <%= link_to '学校一覧ページへ', sample_admin_sample_schools_path, class: 'btn btn-secondary' %>
   </div>
   <div class="row">
@@ -38,6 +38,11 @@
           <td><%= @sample_school.phone_number %></td>
           <td><%= @sample_school.email %></td>
           <td><%= @sample_school.website %></td>
+          <td>
+            <% @sample_school.sample_student_classes.each do |sample_student_class| %>
+              <%= link_to sample_student_class.name, sample_admin_sample_school_sample_student_class_path(@sample_school, sample_student_class) %><br>
+            <% end %>
+          </td>
           <td>
             <% @sample_school.sample_teachers.each do |sample_teacher| %>
               <%= link_to sample_teacher.name, sample_admin_sample_school_sample_teacher_path(@sample_school, sample_teacher) %><br>

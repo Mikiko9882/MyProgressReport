@@ -37,6 +37,7 @@ Rails.application.routes.draw do
                               
     resources :sample_schools do
       resources :sample_teachers, param: :code, only: %i[show new create edit update destroy]
+      resources :sample_student_classes, param: :code, only: %i[show new create edit update destroy]
     end
   end
 

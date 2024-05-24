@@ -36,6 +36,8 @@ ja:
         website: 'ウェブサイト'
       student_class: 
         name: 'クラス名'
+      sample_student_class: 
+        name: 'クラス名'
       teacher:
         name: '名前'
         login_id: 'ログインID'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_24_071320) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_24_081355) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_071320) do
     t.index ["reset_password_token"], name: "index_sample_admins_on_reset_password_token", unique: true
   end
 
+  create_table "sample_grades", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sample_schools", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -64,6 +70,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_071320) do
     t.bigint "sample_admin_id", null: false
     t.index ["code"], name: "index_sample_schools_on_code", unique: true
     t.index ["sample_admin_id"], name: "index_sample_schools_on_sample_admin_id"
+  end
+
+  create_table "sample_student_classes", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "sample_school_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_school_id"], name: "index_sample_student_classes_on_sample_school_id"
   end
 
   create_table "sample_teachers", force: :cascade do |t|
@@ -188,6 +202,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_071320) do
 
   add_foreign_key "max_scores", "teachers"
   add_foreign_key "sample_schools", "sample_admins"
+  add_foreign_key "sample_student_classes", "sample_schools"
   add_foreign_key "sample_teachers", "sample_schools"
   add_foreign_key "schools", "admins"
   add_foreign_key "student_classes", "schools"

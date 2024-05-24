@@ -105,6 +105,13 @@ ja:
         title: '先生詳細'
       edit:
         title: '内容を編集'
+    sample_student_classes:
+      new:
+        title: 'クラス名を追加する'
+      show:
+        title: '追加したクラス'
+      edit:
+        title: 'クラス名を変更する'
   students:
     sessions:
       new:

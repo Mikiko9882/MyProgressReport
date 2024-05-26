@@ -1,0 +1,36 @@
+<header class="header navbar navbar-expand-lg bg-light shadow-sm fixed-top">
+  <div class="container px-0">
+    <a href="index.html" class="navbar-brand pe-3">
+      <%= link_to sample_student_root_path, class: "navbar-brand pe-3" do %>
+        My Progress Report
+      <% end %>
+    </a>
+    
+    <div class="d-flex ms-auto">
+      <div class="dropdown me-3">
+        <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          目標を設定
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><%= link_to '目標一覧', '#', class: 'dropdown-item' %></li>
+          <li><%= link_to '目標を作成する', '#', class: 'dropdown-item' %></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="dropdown me-3">
+      <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        登録する
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><%= link_to 'テスト結果一覧', '#', class: 'dropdown-item' %></li>
+        <li><%= link_to 'テスト結果を登録する', '#', class: 'dropdown-item' %></li>
+        <li><%= link_to 'グラフで見る', '#', class: 'dropdown-item' %></li>
+      </ul>
+    </div>
+
+    <%= link_to '比較する', '#', class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex me-3' %>
+
+    <%= link_to (t 'defaults.logout'), destroy_sample_student_sample_student_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex', data: {turbo_method: :delete} %>
+  </div>
+</header>

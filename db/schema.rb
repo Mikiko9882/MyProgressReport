@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_26_063223) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_26_075921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_26_063223) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sample_school_id"], name: "index_sample_student_classes_on_sample_school_id"
+  end
+
+  create_table "sample_students", force: :cascade do |t|
+    t.string "student_number", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "name"
+    t.string "furigana"
+    t.bigint "sample_school_id"
+    t.bigint "grade_id"
+    t.bigint "sample_student_class_id"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grade_id"], name: "index_sample_students_on_grade_id"
+    t.index ["reset_password_token"], name: "index_sample_students_on_reset_password_token", unique: true
+    t.index ["sample_school_id"], name: "index_sample_students_on_sample_school_id"
+    t.index ["sample_student_class_id"], name: "index_sample_students_on_sample_student_class_id"
+    t.index ["student_number"], name: "index_sample_students_on_student_number", unique: true
   end
 
   create_table "sample_subjects", force: :cascade do |t|
@@ -222,6 +242,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_26_063223) do
   add_foreign_key "sample_max_scores", "sample_teachers"
   add_foreign_key "sample_schools", "sample_admins"
   add_foreign_key "sample_student_classes", "sample_schools"
+  add_foreign_key "sample_students", "grades"
+  add_foreign_key "sample_students", "sample_schools"
+  add_foreign_key "sample_students", "sample_student_classes"
   add_foreign_key "sample_subjects", "sample_teachers"
   add_foreign_key "sample_teachers", "sample_schools"
   add_foreign_key "sample_test_names", "sample_teachers"

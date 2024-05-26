@@ -14,7 +14,7 @@
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <li><%= link_to '学校管理者用', new_sample_admin_sample_admin_session_path, class: 'dropdown-item' %></li>
           <li><%= link_to '先生用', new_sample_teacher_sample_teacher_session_path(school_code: 'sample_code'), class: 'dropdown-item' %></li>
-          <li><%= link_to '生徒用', '#', class: 'dropdown-item' %></li>
+          <li><%= link_to '生徒用', new_sample_student_sample_student_session_path(school_code: 'sample_code'), class: 'dropdown-item' %></li>
         </ul>
       </div>
     </div>

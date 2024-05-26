@@ -106,5 +106,20 @@ Rails.application.routes.draw do
       resources :targets, except: [:show]
       get 'comparisons/index'
     end
+
+    namespace :sample_student, path: 'ss' do
+      root to: 'tops#index', as: 'root'
+
+      devise_for :sample_students,
+                 only: %i[session],
+                 controllers: { sessions: 'sample_students/sessions' }
+      resources :test_results, except: [:show] do
+        collection do
+          get :subject_achievement_rate
+        end
+      end
+      resources :targets, except: [:show]
+      get 'comparisons/index'
+    end
   end
 end

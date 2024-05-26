@@ -133,6 +133,7 @@ Grade.find_or_create_by!(name: "3年")
 #ダミーstudent
 grades = Grade.all
 student_classes = StudentClass.all
+sample_student_classes = SampleStudentClass.all
 
 def generate_furigana(length)
   hiragana = ('あ'..'ん').to_a
@@ -152,6 +153,16 @@ end
     student_class: student_classes.sample
   )
 end
+
+SampleStudent.create!(
+  name: '一年市子',
+  furigana: 'いちねんいちこ',
+  student_number: 'sample1',
+  password: '12345678', 
+  sample_school_id: sample_school.id,
+  grade_id: 1,
+  sample_student_class: sample_student_classes.sample
+)
 
 40.times do |index|
   student_id = Student.pluck(:id).sample

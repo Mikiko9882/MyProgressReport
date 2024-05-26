@@ -30,7 +30,7 @@
       </ul>
     </div>
 
-    <%= link_to '生徒一覧', '#', class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex me-3' %>
+    <%= link_to '生徒一覧', sample_teacher_sample_students_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex me-3' %>
     <%= link_to (t 'defaults.logout'), destroy_sample_teacher_sample_teacher_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex me-3', data: {turbo_method: :delete} %>
   </div>
 </header>

@@ -49,4 +49,8 @@ class SampleStudent < ApplicationRecord
   def average_achievement_rate
     sample_test_results.average(:achievement_rate)
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "encrypted_password", "furigana", "grade_id", "id", "id_value", "name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sample_school_id", "sample_student_class_id", "student_number", "updated_at"]
+  end
 end

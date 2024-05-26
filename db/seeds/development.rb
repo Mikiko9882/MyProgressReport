@@ -157,10 +157,60 @@ end
 SampleStudent.create!(
   name: '一年市子',
   furigana: 'いちねんいちこ',
-  student_number: 'sample1',
+  student_number: 'sample11',
   password: '12345678', 
   sample_school_id: sample_school.id,
   grade_id: 1,
+  sample_student_class: sample_student_classes.sample
+)
+
+SampleStudent.create!(
+  name: '一年二子',
+  furigana: 'いちねんにこ',
+  student_number: 'sample12',
+  password: '12345678', 
+  sample_school_id: sample_school.id,
+  grade_id: 1,
+  sample_student_class: sample_student_classes.sample
+)
+
+SampleStudent.create!(
+  name: '二年市子',
+  furigana: 'にねんいちこ',
+  student_number: 'sample21',
+  password: '12345678', 
+  sample_school_id: sample_school.id,
+  grade_id: 2,
+  sample_student_class: sample_student_classes.sample
+)
+
+SampleStudent.create!(
+  name: '二年二子',
+  furigana: 'にねんにこ',
+  student_number: 'sample22',
+  password: '12345678', 
+  sample_school_id: sample_school.id,
+  grade_id: 2,
+  sample_student_class: sample_student_classes.sample
+)
+
+SampleStudent.create!(
+  name: '三年市子',
+  furigana: 'さんねんいちこ',
+  student_number: 'sample31',
+  password: '12345678', 
+  sample_school_id: sample_school.id,
+  grade_id: 3,
+  sample_student_class: sample_student_classes.sample
+)
+
+SampleStudent.create!(
+  name: '三年二子',
+  furigana: 'さんねんにこ',
+  student_number: 'sample32',
+  password: '12345678', 
+  sample_school_id: sample_school.id,
+  grade_id: 3,
   sample_student_class: sample_student_classes.sample
 )
 

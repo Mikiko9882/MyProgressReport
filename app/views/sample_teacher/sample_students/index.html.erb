@@ -9,7 +9,7 @@
       <h1 class="mb-2 mb-md-0"><%= t '.title' %></h1>
     </div>
     <div class="col-lg-7 col-md-8">
-      <%= search_form_for @q, url: teacher_students_path do |f| %>
+      <%= search_form_for @q, url: sample_teacher_sample_students_path do |f| %>
         <div class="row align-items-end">
           <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
             <div class="input-group">
@@ -23,7 +23,7 @@
           </div>
           <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
             <div class="input-group">
-              <%= f.select :student_class_id_eq, StudentClass.all.map{|c| [c.name, c.id]}, { include_blank: 'クラスを検索' }, { class: 'form-select' } %>
+              <%= f.select :sample_student_class_id_eq, SampleStudentClass.all.map{|c| [c.name, c.id]}, { include_blank: 'クラスを検索' }, { class: 'form-select' } %>
             </div>
           </div>
           <div class="col-lg-2 col-md-4 col-sm-6 mb-2">
@@ -50,7 +50,22 @@
         </tr>
         </thead>
         <tbody>
-        <%= render @students %>
+          <% @sample_students.each do |sample_student| %>
+            <tr>
+              <td><%= sample_student.student_number %></td>
+              <td><%= sample_student.name %></td>
+              <td><%= sample_student.furigana %></td>
+              <td><%= sample_student.grade.name %></td>
+              <td><%= sample_student.sample_student_class.name %></td>
+              <td>
+                <div class="btn-group" role="group">
+                  <%= link_to t('defaults.show'), '#', class: 'btn btn-info me-2' %>
+                  <%= link_to t('defaults.edit'), '#', class: 'btn btn-success me-2' %>
+                  <%= button_to t('defaults.delete'), '#', method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: 'btn btn-danger' %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

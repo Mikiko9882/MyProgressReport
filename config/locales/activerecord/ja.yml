@@ -98,8 +98,8 @@ ja:
         student_number: '学生番号'
         furigana: 'ふりがな'
         grade_id: '学年'
-        student_class_id: 'クラス'
-        school_id: '学校名'
+        sample_student_class_id: 'クラス'
+        sample_school_id: '学校名'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
       sample_test_result:

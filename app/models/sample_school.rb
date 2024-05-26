@@ -4,8 +4,6 @@ class SampleSchool < ApplicationRecord
   has_many :sample_teachers, dependent: :destroy
   has_many :sample_students, dependent: :destroy
 
-  before_validation :generate_unique_code, on: :create
-
   validates :name, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true, format: { with: /\A\d{10,11}\z/}
@@ -14,10 +12,4 @@ class SampleSchool < ApplicationRecord
 
   validates :code, presence: true, uniqueness: true
 
-  def generate_unique_code
-    loop do
-      self.code = SecureRandom.hex(4)
-      break unless School.exists?(code: code)
-    end
-  end
 end

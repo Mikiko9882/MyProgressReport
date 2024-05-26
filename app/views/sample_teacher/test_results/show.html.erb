@@ -1,0 +1,63 @@
+<% content_for(:title, t('.title')) %>
+<div class="container d-flex flex-wrap justify-content-center justify-content-center pt-5">
+  <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
+    <h1><%= t('.title') %></h1>
+    <div class="btn-group mb-3" role="group">
+      <%= link_to t('defaults.edit'), edit_teacher_test_result_path(@test_result), class: 'btn btn-success me-2' %>
+      <%= button_to t('defaults.delete'), teacher_test_result_path(@test_result), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: 'btn btn-danger me-2' %>
+      <%= link_to 'テスト一覧に戻る', teacher_test_results_path, class: 'btn btn-primary' %>
+    </div>
+    <table class="table table-bordered bg-white">
+      <tr>
+        <th scope="row" style="text-align: center;"><%= TestResult.human_attribute_name(:test_name) %></th>
+        <td style="text-align: center;"><%= TestName.find(@test_result.test_name_id).test_name %></td>
+      </tr>
+      <tr>
+        <th scope="row" style="text-align: center;"><%= TestResult.human_attribute_name(:subject_id) %></th>
+        <td style="text-align: center;"><%= Subject.find(@test_result.subject_id).subject_name %></td>
+      </tr>
+      <tr>
+        <th scope="row" style="text-align: center;"><%= Student.human_attribute_name(:name) %></th>
+        <td style="text-align: center;"><%= @test_result.student.name %></td>
+      </tr>
+      <tr>
+        <th scope="row" style="text-align: center; color: red;"><%= TestResult.human_attribute_name(:score) %></th>
+        <td style="text-align: center; color: red;"><%= @test_result.score %>点</td>
+      </tr>
+      <tr>
+      <% if @target %>
+        <th scope="row" style="text-align: center;">目標得点</th>
+          <td style="text-align: center;"><%= @target.target_score %>点</td>
+        </tr>
+      <% end %>
+      <tr>
+        <th scope="row" style="text-align: center;"><%= TestResult.human_attribute_name(:max_score) %></th>
+        <td style="text-align: center;"><%= MaxScore.find(@test_result.max_score_id).max_score %>点</td>
+      </tr>
+      <tr>
+        <th scope="row" style="text-align: center; color: red;"><%= TestResult.human_attribute_name(:achievement_rate) %></th>
+        <td style="text-align: center; color: red;"><%= @test_result.achievement_rate %>%</td>
+      </tr>
+      <% if @target %>
+        <tr>
+          <th scope="row" style="text-align: center;">目標達成率</th>
+          <td style="text-align: center;"><%= @target.target_achievement_rate %>%</td>
+        </tr>
+      <% end %>
+      <tr>
+        <th scope="row" style="text-align: center; color: red;"><%= TestResult.human_attribute_name(:display_preparation_time) %></th>
+        <td style="text-align: center; color: red;"><%= @test_result.display_preparation_time %></td>
+      </tr>
+      <% if @target %>
+        <tr>
+          <th scope="row" style="text-align: center;"><%= Target.human_attribute_name(:target_preparation_time_minutes) %></th>
+          <td style="text-align: center;"><%= @target.display_preparation_time %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <th scope="row" style="text-align: center;"><%= TestResult.human_attribute_name(:created_at) %></th>
+        <td style="text-align: center;"><%= l @test_result.created_at, format: :long %></td>
+      </tr>
+    </table>
+  </div>
+</div>

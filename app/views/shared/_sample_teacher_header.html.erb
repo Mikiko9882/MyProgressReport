@@ -1,0 +1,36 @@
+<header class="header navbar navbar-expand-lg bg-light shadow-sm fixed-top">
+  <div class="container px-0">
+    <a href="index.html" class="navbar-brand pe-3">
+      <%= link_to teacher_root_path, class: "navbar-brand pe-3" do %>
+        My Progress Report
+      <% end %>
+    </a>
+
+    <div class="d-flex ms-auto">
+      <div class="dropdown me-3">
+        <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          要素を追加
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><%= link_to '追加要素一覧', '#', class: 'dropdown-item' %><li>
+          <li><%= link_to '科目を追加', '#', class: 'dropdown-item' %><li>
+          <li><%= link_to 'テスト名を追加', '#', class: 'dropdown-item' %></li>
+          <li><%= link_to '満点を追加', '#', class: 'dropdown-item' %></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="dropdown me-3">
+      <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        テスト結果一覧
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><%= link_to 'テスト結果一覧', '#', class: 'dropdown-item' %><li>
+        <li><%= link_to '平均達成率ランキング', '#', class: 'dropdown-item' %><li>
+      </ul>
+    </div>
+
+    <%= link_to '生徒一覧', '#', class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex me-3' %>
+    <%= link_to (t 'defaults.logout'), destroy_sample_teacher_sample_teacher_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex me-3', data: {turbo_method: :delete} %>
+  </div>
+</header>

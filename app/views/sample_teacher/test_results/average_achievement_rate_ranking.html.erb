@@ -1,0 +1,55 @@
+<% content_for(:title, t('.title')) %>
+<!-- Breadcrumb -->
+<nav class="container mt-lg-4 pt-5" aria-label="breadcrumb"></nav>
+<!-- Page content -->
+<section class="container mt-4 mb-lg-5 pt-lg-2 pb-5">
+  <!-- Page title + Layout switcher + Search form -->
+  <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
+    <div class="col-lg-5 col-md-4">
+      <h1 class="mb-2 mb-md-0"><%= t '.title' %></h1>
+    </div>
+    <div class="col-lg-7 col-md-8">
+      <%= form_tag({controller: 'teacher/test_results', action: 'average_achievement_rate_ranking'}, method: 'get', class: 'form-inline') do %>
+        <div class="row align-items-end">
+          <div class="col-lg-5 col-md-6 col-sm-12 mb-2">
+            <%= select_tag 'grade', options_for_select((1..3).map { |g| ["#{g}年", g] }), { prompt: "学年を選択", class: 'form-control' } %>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 mb-2">
+            <%= submit_tag '表示', class: 'btn btn-primary ml-2' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% if @ranking.present? %>
+    <% @ranking.each do |grade, students| %>
+      <div class="col-sm-12">
+        <h2><%= "#{grade}年" %>のランキング</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>順位</th>
+              <th>学籍番号</th>
+              <th>生徒名</th>
+              <th>ふりがな</th>
+              <th>学年</th>
+              <th>平均達成率</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% students.each do |entry| %>
+              <tr>
+                <td><%= entry[:rank] %></td>
+                <td><%= entry[:student].student_number %></td>
+                <td><%= entry[:student].name %></td>
+                <td><%= entry[:student].furigana %></td>
+                <td><%= entry[:student].grade.name %></td>
+                <td><%= entry[:average_achievement_rate] %>%</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  <% end %>
+</section>

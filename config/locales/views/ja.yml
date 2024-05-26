@@ -153,6 +153,10 @@ ja:
     sessions:
       new:
         title: '先生用ログイン'
+  sample_teachers:
+    sessions:
+      new:
+        title: 'お試し先生用ログイン'
   teacher:
     subjects:
       index:

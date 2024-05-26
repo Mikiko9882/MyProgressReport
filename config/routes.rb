@@ -69,7 +69,26 @@ Rails.application.routes.draw do
       end
     end
 
-    devise_for :sample_teachers
+    namespace :sample_teacher, path: 'st' do
+      root to: 'tops#index', as: 'root'
+
+      devise_for :sample_teachers,
+                 only: %i[session password],
+                 controllers: { sessions: 'sample_teachers/sessions' }
+    
+      resources :subjects
+      resources :test_names, only: %i[show new create edit update destroy]
+      resources :max_scores, only: %i[show new create edit update destroy]
+      
+                                
+      resources :students, only: %i[index edit update show destroy]
+      resources :test_results, only: %i[index edit update show destroy] do
+        collection do
+          get :subject_achievement_rate
+          get :average_achievement_rate_ranking
+        end
+      end
+    end
 
      # 生徒用画面
      scope module: :student do

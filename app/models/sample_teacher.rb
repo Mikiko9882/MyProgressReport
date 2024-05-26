@@ -1,5 +1,9 @@
 class SampleTeacher < ApplicationRecord
   belongs_to :sample_school
+
+  has_many :sample_max_scores, dependent: :destroy
+  has_many :sample_subjects, dependent: :destroy
+  has_many :sample_test_names, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

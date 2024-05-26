@@ -77,6 +77,15 @@ Teacher.all.each do |teacher|
   end
 end
 
+SampleTeacher.all.each do |sample_teacher|
+  subject_names.each do |subject_name|
+    SampleSubject.create!(
+      subject_name: subject_name,
+      sample_teacher_id: sample_teacher.id,
+    )
+  end
+end
+
 test_names = ["1学期中間テスト", "1学期期末テスト", "2学期中間テスト", "2学期期末テスト" , "3学期中間テスト", "3学期期末テスト", "小テスト", "実力テスト"]
 
 Teacher.all.each do |teacher|
@@ -84,6 +93,15 @@ Teacher.all.each do |teacher|
     TestName.create!(
       test_name: test_name,
       teacher_id: teacher.id,
+    )
+  end
+end
+
+SampleTeacher.all.each do |sample_teacher|
+  test_names.each do |test_name|
+    SampleTestName.create!(
+      test_name: test_name,
+      sample_teacher_id: sample_teacher.id,
     )
   end
 end
@@ -99,6 +117,15 @@ Teacher.all.each do |teacher|
   end
 end
 
+SampleTeacher.all.each do |sample_teacher|
+  max_scores.each do |max_score|
+    SampleMaxScore.create!(
+      max_score: max_score,
+      sample_teacher_id: sample_teacher.id,
+    )
+  end
+end
+
 Grade.find_or_create_by!(name: "1年")
 Grade.find_or_create_by!(name: "2年")
 Grade.find_or_create_by!(name: "3年")
@@ -108,7 +135,7 @@ grades = Grade.all
 student_classes = StudentClass.all
 
 def generate_furigana(length)
-  hiragana = ('ぁ'..'ん').to_a
+  hiragana = ('あ'..'ん').to_a
   furigana = ''
   length.times { furigana << hiragana.sample }
   furigana

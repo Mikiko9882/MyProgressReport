@@ -199,6 +199,48 @@ ja:
         title: 'グラフで見る'
       average_achievement_rate_ranking:
         title: '平均達成率ランキング'
+  sample_teacher:
+    sample_subjects:
+      index:
+        title: 'テストの要素を追加する'
+      edit:
+        title: '科目名を編集'
+      new:
+        title: '科目名を登録'
+      show:
+        title: '科目詳細'
+    sample_max_scores:
+      edit:
+        title: '編集'
+      new:
+        title: '満点を登録'
+      show:
+        title: '詳細'
+    sample_test_names:
+      edit:
+        title: '編集'
+      new:
+        title: 'テスト名を登録'
+      show:
+        title: '詳細'
+    sample_students:
+      index:
+        title: '生徒一覧'
+      edit:
+        title: '生徒編集'
+      show:
+        title: '生徒詳細'
+    sample_test_results:
+      index:
+        title: 'テスト結果一覧'
+      edit:
+        title: 'テスト結果編集'
+      show:
+        title: 'テスト結果詳細'
+      subject_achievement_rate:
+        title: 'グラフで見る'
+      average_achievement_rate_ranking:
+        title: '平均達成率ランキング'
   rooms:
     index:
       title: 'メッセージ一覧'

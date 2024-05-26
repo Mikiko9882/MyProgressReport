@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_24_081355) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_26_063223) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,10 +52,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_081355) do
     t.index ["reset_password_token"], name: "index_sample_admins_on_reset_password_token", unique: true
   end
 
-  create_table "sample_grades", force: :cascade do |t|
-    t.string "name", null: false
+  create_table "sample_max_scores", force: :cascade do |t|
+    t.integer "max_score", null: false
+    t.bigint "sample_teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["sample_teacher_id"], name: "index_sample_max_scores_on_sample_teacher_id"
   end
 
   create_table "sample_schools", force: :cascade do |t|
@@ -80,6 +82,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_081355) do
     t.index ["sample_school_id"], name: "index_sample_student_classes_on_sample_school_id"
   end
 
+  create_table "sample_subjects", force: :cascade do |t|
+    t.string "subject_name", null: false
+    t.bigint "sample_teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_teacher_id"], name: "index_sample_subjects_on_sample_teacher_id"
+  end
+
   create_table "sample_teachers", force: :cascade do |t|
     t.string "name"
     t.string "login_id", default: "", null: false
@@ -93,6 +103,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_081355) do
     t.index ["login_id"], name: "index_sample_teachers_on_login_id", unique: true
     t.index ["reset_password_token"], name: "index_sample_teachers_on_reset_password_token", unique: true
     t.index ["sample_school_id"], name: "index_sample_teachers_on_sample_school_id"
+  end
+
+  create_table "sample_test_names", force: :cascade do |t|
+    t.string "test_name", null: false
+    t.bigint "sample_teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_teacher_id"], name: "index_sample_test_names_on_sample_teacher_id"
   end
 
   create_table "schools", force: :cascade do |t|
@@ -201,9 +219,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_081355) do
   end
 
   add_foreign_key "max_scores", "teachers"
+  add_foreign_key "sample_max_scores", "sample_teachers"
   add_foreign_key "sample_schools", "sample_admins"
   add_foreign_key "sample_student_classes", "sample_schools"
+  add_foreign_key "sample_subjects", "sample_teachers"
   add_foreign_key "sample_teachers", "sample_schools"
+  add_foreign_key "sample_test_names", "sample_teachers"
   add_foreign_key "schools", "admins"
   add_foreign_key "student_classes", "schools"
   add_foreign_key "students", "grades"

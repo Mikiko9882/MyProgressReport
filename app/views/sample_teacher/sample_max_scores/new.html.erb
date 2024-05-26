@@ -3,19 +3,19 @@
 <div class="container d-flex flex-wrap justify-content-center justify-content-center pt-5">
   <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
     <h1 class="text-center text-xl-start"><%= t '.title' %></h1>
-    <%= form_with(model: @test_name, url: teacher_test_name_path(@test_name), method: :patch, local: true) do |f| %>
+    <%= form_with(model: @sample_max_score, url: sample_teacher_sample_max_scores_path, local: true) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class="row">
         <div class="col-12">
           <div class="position-relative mb-4">
             <div class="form-group">
-              <%= f.label :test_name %>
-              <%= f.text_field :test_name, class: 'form-control' %>
+              <%= f.label :max_score %>
+              <%= f.text_field :max_score, class: 'form-control' %>
             </div>
           </div>
         </div>
       </div>
-      <%= f.submit '更新する', class: "btn btn-primary shadow-primary btn-lg w-100" %>
+      <%= f.submit '追加する', class: "btn btn-primary shadow-primary btn-lg w-100" %>
     <% end %>
   </div>
 </div>

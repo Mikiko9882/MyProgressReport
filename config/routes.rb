@@ -76,9 +76,9 @@ Rails.application.routes.draw do
                  only: %i[session password],
                  controllers: { sessions: 'sample_teachers/sessions' }
     
-      resources :subjects
-      resources :test_names, only: %i[show new create edit update destroy]
-      resources :max_scores, only: %i[show new create edit update destroy]
+      resources :sample_subjects
+      resources :sample_test_names, only: %i[show new create edit update destroy]
+      resources :sample_max_scores, only: %i[show new create edit update destroy]
       
                                 
       resources :students, only: %i[index edit update show destroy]

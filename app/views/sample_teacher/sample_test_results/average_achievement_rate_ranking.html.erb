@@ -9,7 +9,7 @@
       <h1 class="mb-2 mb-md-0"><%= t '.title' %></h1>
     </div>
     <div class="col-lg-7 col-md-8">
-      <%= form_tag({controller: 'teacher/test_results', action: 'average_achievement_rate_ranking'}, method: 'get', class: 'form-inline') do %>
+      <%= form_tag({controller: 'sample_teacher/sample_test_results', action: 'average_achievement_rate_ranking'}, method: 'get', class: 'form-inline') do %>
         <div class="row align-items-end">
           <div class="col-lg-5 col-md-6 col-sm-12 mb-2">
             <%= select_tag 'grade', options_for_select((1..3).map { |g| ["#{g}年", g] }), { prompt: "学年を選択", class: 'form-control' } %>
@@ -22,7 +22,7 @@
     </div>
   </div>
   <% if @ranking.present? %>
-    <% @ranking.each do |grade, students| %>
+    <% @ranking.each do |grade, sample_students| %>
       <div class="col-sm-12">
         <h2><%= "#{grade}年" %>のランキング</h2>
         <table class="table table-striped">
@@ -37,13 +37,13 @@
             </tr>
           </thead>
           <tbody>
-            <% students.each do |entry| %>
+            <% sample_students.each do |entry| %>
               <tr>
                 <td><%= entry[:rank] %></td>
-                <td><%= entry[:student].student_number %></td>
-                <td><%= entry[:student].name %></td>
-                <td><%= entry[:student].furigana %></td>
-                <td><%= entry[:student].grade.name %></td>
+                <td><%= entry[:sample_student].student_number %></td>
+                <td><%= entry[:sample_student].name %></td>
+                <td><%= entry[:sample_student].furigana %></td>
+                <td><%= entry[:sample_student].grade.name %></td>
                 <td><%= entry[:average_achievement_rate] %>%</td>
               </tr>
             <% end %>

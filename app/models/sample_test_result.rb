@@ -28,6 +28,10 @@ class SampleTestResult < ApplicationRecord
       .pluck(:preparation_time_minutes, :achievement_rate)
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["sample_max_score", "sample_student", "sample_subject", "sample_test_name"]
+  end
+
   private
 
   def calculate_achievement_rate

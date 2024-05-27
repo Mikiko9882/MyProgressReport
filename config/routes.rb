@@ -82,7 +82,7 @@ Rails.application.routes.draw do
       
                                 
       resources :sample_students, only: %i[index]
-      resources :test_results, only: %i[index edit update show destroy] do
+      resources :sample_test_results, only: %i[index show] do
         collection do
           get :subject_achievement_rate
           get :average_achievement_rate_ranking

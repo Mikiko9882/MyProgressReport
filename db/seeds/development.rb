@@ -32,7 +32,7 @@ sample_school = SampleSchool.create!(
   sample_admin_id: sample_admin.id,
 )
 
-class_names = ["1組", "2組", "3組", "4組", "5組", "6組", "7組", "8組", "9組", "10組"]
+class_names = ["1組", "2組", "3組", "4組", "5組"]
 
 School.all.each do |school|
   class_names.each do |class_name|
@@ -86,7 +86,7 @@ SampleTeacher.all.each do |sample_teacher|
   end
 end
 
-test_names = ["1学期中間テスト", "1学期期末テスト", "2学期中間テスト", "2学期期末テスト" , "3学期中間テスト", "3学期期末テスト", "小テスト", "実力テスト"]
+test_names = ["1学期中間テスト", "1学期期末テスト", "2学期中間テスト", "2学期期末テスト"]
 
 Teacher.all.each do |teacher|
   test_names.each do |test_name|
@@ -107,6 +107,7 @@ SampleTeacher.all.each do |sample_teacher|
 end
 
 max_scores = ["100", "50", "20", "10" , "5"]
+sample_max_scores = ["100"]
 
 Teacher.all.each do |teacher|
   max_scores.each do |max_score|
@@ -118,7 +119,7 @@ Teacher.all.each do |teacher|
 end
 
 SampleTeacher.all.each do |sample_teacher|
-  max_scores.each do |max_score|
+  sample_max_scores.each do |max_score|
     SampleMaxScore.create!(
       max_score: max_score,
       sample_teacher_id: sample_teacher.id,
@@ -231,4 +232,32 @@ SampleStudent.create!(
     subject_id: subject_id,
     preparation_time_minutes: rand(300),
   )
+end
+
+sample_subjects = SampleSubject.all
+sample_test_names = SampleTestName.all
+
+SampleStudent.all.each do |sample_student|
+  sample_student.sample_student_class # 確認のための読み込み
+  sample_student.grade # 確認のための読み込み
+
+  sample_subjects.each do |sample_subject|
+    sample_test_names.each do |sample_test_name|
+      sample_max_score = SampleMaxScore.find_by(sample_teacher_id: SampleTeacher.pluck(:id).sample)
+      max_score_value = sample_max_score&.max_score || 100
+
+      score = rand(0..max_score_value) # 最大スコアまでのランダムなスコアを生成します
+      achievement_rate = (score.to_f / max_score_value) * 100
+
+      SampleTestResult.create!(
+        sample_student: sample_student,
+        sample_test_name: sample_test_name,
+        sample_subject: sample_subject,
+        score: score,
+        sample_max_score: sample_max_score,
+        preparation_time_minutes: rand(300),
+        achievement_rate: achievement_rate
+      )
+    end
+  end
 end

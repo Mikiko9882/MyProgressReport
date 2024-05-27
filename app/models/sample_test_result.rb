@@ -35,15 +35,15 @@ class SampleTestResult < ApplicationRecord
   private
 
   def calculate_achievement_rate
-    return if score.nil? || max_score.nil?
+    return if score.nil? || sample_max_score.nil?
 
-    max_score_value = max_score.max_score
+    max_score_value = sample_max_score.max_score
     self.achievement_rate = ((score.to_f / max_score_value) * 100).round
   end
 
   def achievement_rate_within_range
-    if score.present? && max_score.present?
-      calculated_achievement_rate = ((score.to_f / max_score.max_score) * 100).round
+    if score.present? && sample_max_score.present?
+      calculated_achievement_rate = ((score.to_f / sample_max_score.max_score) * 100).round
       if calculated_achievement_rate > 100
         errors.add(:score, "達成率は100%を超えることはできません")
       end

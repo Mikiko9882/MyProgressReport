@@ -81,7 +81,7 @@ Rails.application.routes.draw do
       resources :sample_max_scores, only: %i[show]
       
                                 
-      resources :sample_students, only: %i[index]
+      resources :sample_students, only: %i[index show]
       resources :sample_test_results, only: %i[index show] do
         collection do
           get :subject_achievement_rate

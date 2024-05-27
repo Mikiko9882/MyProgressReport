@@ -24,8 +24,12 @@
         <th scope="row" style="text-align: center; color: red;"><%= TestResult.human_attribute_name(:score) %></th>
         <td style="text-align: center; color: red;"><%= @sample_test_result.score %>点</td>
       </tr>
-      
-
+      <% if @sample_target %>
+        <tr>
+          <th scope="row" style="text-align: center;">目標得点</th>
+          <td style="text-align: center;"><%= @sample_target.target_score %>点</td>
+        </tr>  
+      <% end %>
       <tr>
         <th scope="row" style="text-align: center;"><%= TestResult.human_attribute_name(:max_score) %></th>
         <td style="text-align: center;"><%= SampleMaxScore.find(@sample_test_result.sample_max_score_id).max_score %>点</td>
@@ -34,15 +38,22 @@
         <th scope="row" style="text-align: center; color: red;"><%= TestResult.human_attribute_name(:achievement_rate) %></th>
         <td style="text-align: center; color: red;"><%= @sample_test_result.achievement_rate %>%</td>
       </tr>
-      
-
+      <% if @sample_target %>
+        <tr>
+          <th scope="row" style="text-align: center;">目標達成率</th>
+          <td style="text-align: center;"><%= @sample_target.target_achievement_rate %>%</td>
+        </tr>
+      <% end %>
       <tr>
         <th scope="row" style="text-align: center; color: red;"><%= TestResult.human_attribute_name(:display_preparation_time) %></th>
         <td style="text-align: center; color: red;"><%= @sample_test_result.display_preparation_time %></td>
       </tr>
-      
-
-
+      <% if @sample_target %>
+        <tr>
+          <th scope="row" style="text-align: center;"><%= Target.human_attribute_name(:target_preparation_time_minutes) %></th>
+          <td style="text-align: center;"><%= @sample_target.display_preparation_time %></td>
+        </tr>
+      <% end %>
       <tr>
         <th scope="row" style="text-align: center;"><%= TestResult.human_attribute_name(:created_at) %></th>
         <td style="text-align: center;"><%= l @sample_test_result.created_at, format: :long %></td>

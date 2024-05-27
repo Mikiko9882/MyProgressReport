@@ -8,7 +8,7 @@ class SampleTeacher::SampleStudentsController < SampleTeacher::BaseController
 
 
   def show
-    
+    @average_achievement_rate = @sample_student.average_achievement_rate
   end
   
   private

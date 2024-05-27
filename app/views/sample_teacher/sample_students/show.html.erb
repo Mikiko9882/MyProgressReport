@@ -28,9 +28,10 @@
         <th scope="row" style="text-align: center;"><%= Student.human_attribute_name(:student_class_id)%></th>
         <td style="text-align: center;"><%= @sample_student.sample_student_class.name %></td>
       </tr>
-      
-
-      
+      <tr>
+        <th scope="row" style="text-align: center;"><%= '達成率の平均値'%></th>
+        <td style="text-align: center;"><%= @average_achievement_rate.present? ? number_to_percentage(@average_achievement_rate, precision: 0) : 'N/A' %>
+      <tr>
     </table>
   </div>
 </div>

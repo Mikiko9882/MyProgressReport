@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_26_075921) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_26_152049) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -133,6 +133,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_26_075921) do
     t.index ["sample_teacher_id"], name: "index_sample_test_names_on_sample_teacher_id"
   end
 
+  create_table "sample_test_results", force: :cascade do |t|
+    t.bigint "sample_student_id"
+    t.bigint "sample_test_name_id"
+    t.bigint "sample_subject_id"
+    t.bigint "sample_max_score_id"
+    t.integer "score", null: false
+    t.integer "preparation_time_minutes", null: false
+    t.float "achievement_rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_max_score_id"], name: "index_sample_test_results_on_sample_max_score_id"
+    t.index ["sample_student_id"], name: "index_sample_test_results_on_sample_student_id"
+    t.index ["sample_subject_id"], name: "index_sample_test_results_on_sample_subject_id"
+    t.index ["sample_test_name_id"], name: "index_sample_test_results_on_sample_test_name_id"
+  end
+
   create_table "schools", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -248,6 +264,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_26_075921) do
   add_foreign_key "sample_subjects", "sample_teachers"
   add_foreign_key "sample_teachers", "sample_schools"
   add_foreign_key "sample_test_names", "sample_teachers"
+  add_foreign_key "sample_test_results", "sample_max_scores"
+  add_foreign_key "sample_test_results", "sample_students"
+  add_foreign_key "sample_test_results", "sample_subjects"
+  add_foreign_key "sample_test_results", "sample_test_names"
   add_foreign_key "schools", "admins"
   add_foreign_key "student_classes", "schools"
   add_foreign_key "students", "grades"

@@ -113,7 +113,7 @@ Rails.application.routes.draw do
       devise_for :sample_students,
                  only: %i[session],
                  controllers: { sessions: 'sample_students/sessions' }
-      resources :test_results, except: [:show] do
+      resources :sample_test_results, only: %i[index] do
         collection do
           get :subject_achievement_rate
         end

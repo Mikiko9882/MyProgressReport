@@ -5,12 +5,12 @@
   </div>
   
   <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 1000px;">
-    <% @subjects.each do |subject| %>
+    <% @sample_subjects.each do |sample_subject| %>
       <div class="row mb-5">
         <div class="col-md-12">
-          <h2><%= subject %>の結果</h2>
+          <h2><%= sample_subject %>の結果</h2>
         </div>
-        <% data = @data_by_subject[subject] %>
+        <% data = @data_by_sample_subject[sample_subject] %>
         <div class="col-md-6">
           <%= line_chart data[:line_chart_data], xtitle: 'テスト名', ytitle: '達成率 (%)', suffix: '%', height: '400px' %>
         </div>

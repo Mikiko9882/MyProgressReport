@@ -258,6 +258,24 @@ SampleStudent.all.each do |sample_student|
         preparation_time_minutes: rand(300),
         achievement_rate: achievement_rate
       )
+
+      # 目標を作成
+      if score > 0
+        min_target_score = [0, score - rand(0..10)].max # テスト結果のスコア以下のランダムな目標スコアを生成します
+      else
+        min_target_score = 0
+      end
+
+      target_score = rand(min_target_score..max_score_value) # テスト結果のスコア以上または以下のランダムな目標スコアを生成します
+      target_preparation_time_minutes = rand(300)
+
+      sample_student.sample_targets.create!(
+        sample_test_name: sample_test_name,
+        sample_subject: sample_subject,
+        sample_max_score: sample_max_score,
+        target_score: target_score,
+        target_preparation_time_minutes: target_preparation_time_minutes
+      )
     end
   end
 end

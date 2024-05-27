@@ -118,8 +118,8 @@ Rails.application.routes.draw do
           get :subject_achievement_rate
         end
       end
-      resources :targets, except: [:show]
-      get 'comparisons/index'
+      resources :sample_targets, only: %i[index]
+      get 'sample_comparisons/index'
     end
   end
 end

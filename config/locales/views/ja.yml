@@ -171,7 +171,7 @@ ja:
         title: '点数編集'
       subject_achievement_rate:
         title: 'グラフで見る'
-    targets:
+    sample_targets:
       index:
         title: "目標一覧"
         test_name: "テスト名"
@@ -183,7 +183,7 @@ ja:
         title: 'テスト目標入力'
       edit:
         title: '目標編集'
-    comparisons:
+    sample_comparisons:
       index:
         title: "目標とテスト結果の比較"
   teachers:

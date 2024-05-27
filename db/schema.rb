@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_26_152049) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_27_063702) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -108,6 +108,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_26_152049) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sample_teacher_id"], name: "index_sample_subjects_on_sample_teacher_id"
+  end
+
+  create_table "sample_targets", force: :cascade do |t|
+    t.bigint "sample_student_id"
+    t.bigint "sample_test_name_id"
+    t.bigint "sample_subject_id"
+    t.bigint "sample_max_score_id"
+    t.integer "target_score"
+    t.integer "target_preparation_time_minutes"
+    t.float "target_achievement_rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_max_score_id"], name: "index_sample_targets_on_sample_max_score_id"
+    t.index ["sample_student_id"], name: "index_sample_targets_on_sample_student_id"
+    t.index ["sample_subject_id"], name: "index_sample_targets_on_sample_subject_id"
+    t.index ["sample_test_name_id"], name: "index_sample_targets_on_sample_test_name_id"
   end
 
   create_table "sample_teachers", force: :cascade do |t|
@@ -262,6 +278,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_26_152049) do
   add_foreign_key "sample_students", "sample_schools"
   add_foreign_key "sample_students", "sample_student_classes"
   add_foreign_key "sample_subjects", "sample_teachers"
+  add_foreign_key "sample_targets", "sample_max_scores"
+  add_foreign_key "sample_targets", "sample_students"
+  add_foreign_key "sample_targets", "sample_subjects"
+  add_foreign_key "sample_targets", "sample_test_names"
   add_foreign_key "sample_teachers", "sample_schools"
   add_foreign_key "sample_test_names", "sample_teachers"
   add_foreign_key "sample_test_results", "sample_max_scores"

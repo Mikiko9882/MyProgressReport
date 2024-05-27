@@ -51,16 +51,16 @@
         <tbody>
           <% @sample_test_results.each do |sample_test_result| %>
             <tr>
-              <td><%= sample_test_result.sample_student.sample_student_number %></td>
+              <td><%= sample_test_result.sample_student.student_number %></td>
               <td><%= link_to sample_test_result.sample_student.name, subject_achievement_rate_sample_teacher_sample_test_results_path(id: sample_test_result.sample_student.id) %></td>
               <td><%= sample_test_result.sample_student.grade.name %></td>
               <td><%= sample_test_result.sample_student.sample_student_class.name %></td>
-              <td><%= link_to SampleTestName.find(sample_test_result.sample_test_name_id).sample_test_name, sample_teacher_sample_test_result_path(id: sample_test_result.id) %></td>
+              <td><%= link_to SampleTestName.find(sample_test_result.sample_test_name_id).test_name, sample_teacher_sample_test_result_path(id: sample_test_result.id) %></td>
               <td><%= SampleSubject.find(sample_test_result.sample_subject_id).subject_name %></td>
               <td><%= l sample_test_result.created_at, format: :long %></td>
               <td>
                 <div class="btn-group" role="group">
-                  <%= link_to t('defaults.show'), sample_teacher_sample_test_result_path(id: test_result.id), class: 'btn btn-info me-2' %>
+                  <%= link_to t('defaults.show'), sample_teacher_sample_test_result_path(id: sample_test_result.id), class: 'btn btn-info me-2' %>
                   <%= link_to t('defaults.edit'), '#', class: 'btn btn-success me-2' %>
                   <%= button_to t('defaults.delete'), '#', method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: 'btn btn-danger' %>
                 </div>  

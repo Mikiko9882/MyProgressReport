@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   # サンプルシステム管理者用画面
   namespace :sample_admin, path: 'sample_admin' do
-    root to: 'tops#index', as: 'root'
+    root to: 'sample_schools#index', as: 'root'
 
     devise_for :sample_admins,
                only: %i[session password],

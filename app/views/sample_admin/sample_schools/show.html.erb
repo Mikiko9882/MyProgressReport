@@ -40,7 +40,7 @@
           <td><%= @sample_school.website %></td>
           <td>
             <% @sample_school.sample_student_classes.each do |sample_student_class| %>
-              <%= link_to sample_student_class.name, sample_admin_sample_school_sample_student_class_path(@sample_school, sample_student_class) %><br>
+              <%= sample_student_class.name %><br>
             <% end %>
           </td>
           <td>

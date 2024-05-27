@@ -84,6 +84,34 @@ ja:
         title: '先生詳細'
       edit:
         title: '内容を編集'
+  sample_admins:
+    sessions:
+      new:
+        title: 'お試し用ログイン'
+  sample_admin:
+    sample_schools:
+      new:
+        title: '学校を登録する'
+      index:
+        title: '学校一覧'
+      show:
+        title: '学校詳細'
+      edit:
+        title: '内容を編集'
+    sample_teachers:
+      new:
+        title: '先生を登録する'
+      show:
+        title: '先生詳細'
+      edit:
+        title: '内容を編集'
+    sample_student_classes:
+      new:
+        title: 'クラス名を追加する'
+      show:
+        title: '追加したクラス'
+      edit:
+        title: 'クラス名を変更する'
   students:
     sessions:
       new:
@@ -121,10 +149,51 @@ ja:
     comparisons:
       index:
         title: "目標とテスト結果の比較"
+  sample_students:
+    sessions:
+      new:
+        title: 'お試し生徒用ログイン'
+    registrations:
+      new:
+        title: '新規登録'
+  sample_student:
+    sample_test_results:
+      index:
+        title: "テスト結果一覧"
+        test_name: "テスト名"
+        score: "得点"
+        max_score: "満点"
+        achievement_rate: "達成率"
+        percentage_sign: "%"
+      new:
+        title: 'テスト結果入力'
+      edit:
+        title: '点数編集'
+      subject_achievement_rate:
+        title: 'グラフで見る'
+    sample_targets:
+      index:
+        title: "目標一覧"
+        test_name: "テスト名"
+        target_score: "得点"
+        max_score: "満点"
+        target_achievement_rate: "目標達成率"
+        target_percentage_sign: "%"
+      new:
+        title: 'テスト目標入力'
+      edit:
+        title: '目標編集'
+    sample_comparisons:
+      index:
+        title: "目標とテスト結果の比較"
   teachers:
     sessions:
       new:
         title: '先生用ログイン'
+  sample_teachers:
+    sessions:
+      new:
+        title: 'お試し先生用ログイン'
   teacher:
     subjects:
       index:
@@ -157,6 +226,48 @@ ja:
       show:
         title: '生徒詳細'
     test_results:
+      index:
+        title: 'テスト結果一覧'
+      edit:
+        title: 'テスト結果編集'
+      show:
+        title: 'テスト結果詳細'
+      subject_achievement_rate:
+        title: 'グラフで見る'
+      average_achievement_rate_ranking:
+        title: '平均達成率ランキング'
+  sample_teacher:
+    sample_subjects:
+      index:
+        title: 'テストの要素を追加する'
+      edit:
+        title: '科目名を編集'
+      new:
+        title: '科目名を登録'
+      show:
+        title: '科目詳細'
+    sample_max_scores:
+      edit:
+        title: '編集'
+      new:
+        title: '満点を登録'
+      show:
+        title: '詳細'
+    sample_test_names:
+      edit:
+        title: '編集'
+      new:
+        title: 'テスト名を登録'
+      show:
+        title: '詳細'
+    sample_students:
+      index:
+        title: '生徒一覧'
+      edit:
+        title: '生徒編集'
+      show:
+        title: '生徒詳細'
+    sample_test_results:
       index:
         title: 'テスト結果一覧'
       edit:

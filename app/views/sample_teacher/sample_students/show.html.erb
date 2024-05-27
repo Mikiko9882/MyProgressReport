@@ -1,0 +1,37 @@
+<% content_for(:title, t('.title')) %>
+<div class="container d-flex flex-wrap justify-content-center justify-content-center pt-5">
+  <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
+    <h1><%= t('.title') %></h1>
+    <div class="btn-group mb-3" role="group">
+      <%= link_to t('defaults.edit'), '#', class: 'btn btn-success me-2' %>
+      <%= button_to t('defaults.delete'), '#', method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: 'btn btn-danger me-2' %>
+      <%= link_to '生徒一覧に戻る', sample_teacher_sample_students_path, class: 'btn btn-primary' %>
+    </div>
+    <table class="table table-bordered bg-white">
+      <tr>
+        <th scope="row" style="text-align: center;"><%= Student.human_attribute_name(:name) %></th>
+        <td style="text-align: center;"><%= @sample_student.name %></td>
+      </tr>
+      <tr>
+        <th scope="row" style="text-align: center;"><%= Student.human_attribute_name(:furigana) %></th>
+        <td style="text-align: center;"><%= @sample_student.furigana %></td>
+      </tr>
+      <tr>
+        <th scope="row" style="text-align: center;"><%= Student.human_attribute_name(:student_number) %></th>
+        <td style="text-align: center;"><%= @sample_student.student_number %></td>
+      </tr>
+      <tr>
+        <th scope="row" style="text-align: center;"><%= Student.human_attribute_name(:grade_id)%></th>
+        <td style="text-align: center;"><%= @sample_student.grade.name %></td>
+      </tr>
+      <tr>
+        <th scope="row" style="text-align: center;"><%= Student.human_attribute_name(:student_class_id)%></th>
+        <td style="text-align: center;"><%= @sample_student.sample_student_class.name %></td>
+      </tr>
+      <tr>
+        <th scope="row" style="text-align: center;"><%= '達成率の平均値'%></th>
+        <td style="text-align: center;"><%= @average_achievement_rate.present? ? number_to_percentage(@average_achievement_rate, precision: 0) : 'N/A' %>
+      <tr>
+    </table>
+  </div>
+</div>

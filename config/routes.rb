@@ -26,6 +26,21 @@ Rails.application.routes.draw do
     end
   end
 
+  # サンプルシステム管理者用画面
+  namespace :sample_admin, path: 'sample_admin' do
+    root to: 'tops#index', as: 'root'
+
+    devise_for :sample_admins,
+               only: %i[session password],
+               controllers: { passwords: 'sample_admins/passwords',
+                              sessions: 'sample_admins/sessions' }
+                              
+    resources :sample_schools, only: [:index, :show] do
+      resources :sample_student_classes, param: :code, only: %i[show]
+      resources :sample_teachers, param: :code, only: %i[show]
+    end
+  end
+
   #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   # マルチテナントの切り分け
   scope '/:school_code' do
@@ -54,6 +69,27 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :sample_teacher, path: 'st' do
+      root to: 'tops#index', as: 'root'
+
+      devise_for :sample_teachers,
+                 only: %i[session password],
+                 controllers: { sessions: 'sample_teachers/sessions' }
+    
+      resources :sample_subjects, only: [:index, :show]
+      resources :sample_test_names, only: %i[show]
+      resources :sample_max_scores, only: %i[show]
+      
+                                
+      resources :sample_students, only: %i[index show]
+      resources :sample_test_results, only: %i[index show] do
+        collection do
+          get :subject_achievement_rate
+          get :average_achievement_rate_ranking
+        end
+      end
+    end
+
      # 生徒用画面
      scope module: :student do
       root to: 'tops#index', as: 'student_root'
@@ -69,6 +105,21 @@ Rails.application.routes.draw do
       end
       resources :targets, except: [:show]
       get 'comparisons/index'
+    end
+
+    namespace :sample_student, path: 'ss' do
+      root to: 'tops#index', as: 'root'
+
+      devise_for :sample_students,
+                 only: %i[session],
+                 controllers: { sessions: 'sample_students/sessions' }
+      resources :sample_test_results, only: %i[index] do
+        collection do
+          get :subject_achievement_rate
+        end
+      end
+      resources :sample_targets, only: %i[index]
+      get 'sample_comparisons/index'
     end
   end
 end

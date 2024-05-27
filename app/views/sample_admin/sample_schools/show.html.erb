@@ -1,0 +1,55 @@
+<% content_for(:title, t('.title')) %>
+<!-- Breadcrumb -->
+<nav class="container mt-lg-4 pt-5" aria-label="breadcrumb"></nav>
+<!-- Page content -->
+<section class="container mt-4 mb-lg-5 pt-lg-2 pb-5">
+  <!-- Page title + Layout switcher + Search form -->
+  <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
+    <div class="col-lg-5 col-md-4">
+      <h1 class="mb-2 mb-md-0"><%= t '.title' %></h1>
+    </div>
+  </div>
+  <div class="btn-group mb-3" role="group">
+    <%= link_to t('defaults.edit'), '#', class: 'btn btn-success me-2' %>
+    <%= button_to t('defaults.delete'), '#', method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: 'btn btn-danger me-2' %>
+    <%= link_to '先生を追加する', '#', class: 'btn btn-primary me-2' %>
+    <%= link_to 'クラスを追加する', '#', class: 'btn btn-primary me-2' %>
+    <%= link_to '学校一覧ページへ', sample_admin_sample_schools_path, class: 'btn btn-secondary' %>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th><%= School.human_attribute_name(:name) %></th>
+          <th>コード</th>
+          <th><%= School.human_attribute_name(:address) %></th>
+          <th><%= School.human_attribute_name(:phone_number)%></th>
+          <th><%= School.human_attribute_name(:email)%></th>
+          <th><%= School.human_attribute_name(:website) %></th>
+          <th>クラス名</th>
+          <th>先生一覧</th>
+        </tr>
+        </thead>
+        <tbody>
+          <td><%= @sample_school.name %></td>
+          <td><%= @sample_school.code %></td>
+          <td><%= @sample_school.address %></td>
+          <td><%= @sample_school.phone_number %></td>
+          <td><%= @sample_school.email %></td>
+          <td><%= @sample_school.website %></td>
+          <td>
+            <% @sample_school.sample_student_classes.each do |sample_student_class| %>
+              <%= link_to sample_student_class.name, sample_admin_sample_school_sample_student_class_path(@sample_school, sample_student_class) %><br>
+            <% end %>
+          </td>
+          <td>
+            <% @sample_school.sample_teachers.each do |sample_teacher| %>
+              <%= link_to sample_teacher.name, sample_admin_sample_school_sample_teacher_path(@sample_school, sample_teacher) %><br>
+            <% end %>
+          </td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

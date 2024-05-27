@@ -1,0 +1,74 @@
+<% content_for(:title, t('.title')) %>
+<!-- Breadcrumb -->
+<nav class="container mt-lg-4 pt-5" aria-label="breadcrumb"></nav>
+<!-- Page content -->
+<section class="container mt-4 mb-lg-5 pt-lg-2 pb-5">
+  <!-- Page title + Layout switcher + Search form -->
+  <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
+    <div class="col-lg-5 col-md-4">
+      <h1 class="mb-2 mb-md-0"><%= t '.title' %></h1>
+    </div>
+    <div class="col-lg-7 col-md-8">
+      <%= search_form_for @q, url: sample_teacher_sample_students_path do |f| %>
+        <div class="row align-items-end">
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
+            <div class="input-group">
+              <%= f.search_field :name_cont, class: 'form-control', placeholder: '氏名を検索' %>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
+            <div class="input-group">
+              <%= f.select :grade_id_eq, Grade.all.map{|g| [g.name, g.id]}, { include_blank: '学年を検索' }, { class: 'form-select' } %>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
+            <div class="input-group">
+              <%= f.select :sample_student_class_id_eq, SampleStudentClass.all.map{|c| [c.name, c.id]}, { include_blank: 'クラスを検索' }, { class: 'form-select' } %>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 mb-2">
+            <div class="input-group">
+              <%= f.submit "検索", class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col"><%= Student.human_attribute_name(:student_number) %></th>
+          <th scope="col"><%= Student.human_attribute_name(:name) %></th>
+          <th scope="col"><%= Student.human_attribute_name(:furigana) %></th>
+          <th scope="col"><%= Student.human_attribute_name(:grade_id) %></th>
+          <th scope="col"><%= Student.human_attribute_name(:student_class_id) %></th>
+          <th scope="col">Action</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @sample_students.each do |sample_student| %>
+            <tr>
+              <td><%= sample_student.student_number %></td>
+              <td><%= sample_student.name %></td>
+              <td><%= sample_student.furigana %></td>
+              <td><%= sample_student.grade.name %></td>
+              <td><%= sample_student.sample_student_class.name %></td>
+              <td>
+                <div class="btn-group" role="group">
+                  <%= link_to t('defaults.show'), sample_teacher_sample_student_path(id: sample_student.id), class: 'btn btn-info me-2' %>
+                  <%= link_to t('defaults.edit'), '#', class: 'btn btn-success me-2' %>
+                  <%= button_to t('defaults.delete'), '#', method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: 'btn btn-danger' %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+</section>

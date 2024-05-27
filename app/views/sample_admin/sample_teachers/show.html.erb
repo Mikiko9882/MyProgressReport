@@ -1,0 +1,22 @@
+<% content_for(:title, t('.title')) %>
+<div class="container d-flex flex-wrap justify-content-center justify-content-center pt-5">
+  <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
+    <h1><%= t('.title') %></h1>
+    <div class="btn-group mb-3" role="group">
+      <%= link_to t('defaults.edit'), '#', class: 'btn btn-success me-2' %>
+      <%= button_to t('defaults.delete'), '#', method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: 'btn btn-danger me-2' %>
+      <%= link_to t('defaults.back'), sample_admin_sample_school_path(@sample_school), class: 'btn btn-secondary' %>
+    </div>
+
+    <table class="table table-bordered bg-white">
+      <tr>
+        <th scope="row"><%= Teacher.human_attribute_name(:name) %></th>
+        <td><%= @sample_teacher.name %></td>
+      </tr>
+      <tr>
+        <th scope="row"><%= Teacher.human_attribute_name(:login_id) %></th>
+        <td><%= @sample_teacher.login_id %></td>
+      </tr>
+    </table>
+  </div>
+</div>

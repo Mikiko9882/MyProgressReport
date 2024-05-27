@@ -18,7 +18,17 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         email: 'メールアドレス'
+      sample_admin:
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        email: 'メールアドレス'
       school:
+        name: '学校名'
+        address: '住所'
+        phone_number: '電話番号'
+        email: 'メールアドレス'
+        website: 'ウェブサイト'
+      sample_school:
         name: '学校名'
         address: '住所'
         phone_number: '電話番号'
@@ -26,7 +36,14 @@ ja:
         website: 'ウェブサイト'
       student_class: 
         name: 'クラス名'
+      sample_student_class: 
+        name: 'クラス名'
       teacher:
+        name: '名前'
+        login_id: 'ログインID'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+      sample_teacher:
         name: '名前'
         login_id: 'ログインID'
         password: 'パスワード'
@@ -70,9 +87,48 @@ ja:
         test_name_id: "テスト名"
         max_score_id: "満点"
         subject_id: "教科"
-      grade: 
+      sample_subject:
+        subject_name: '科目名'
+      sample_test_name:
+        test_name: 'テスト名'
+      sample_max_score:
+        max_score: '満点'
+      sample_student:
+        name: '名前'
+        student_number: '学生番号'
+        furigana: 'ふりがな'
         grade_id: '学年'
-      user_class:
+        sample_student_class_id: 'クラス'
+        sample_school_id: '学校名'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+      sample_test_result:
+        title: 'テスト結果'
+        test_name: "テスト名"
+        score: "得点"
+        max_score: "満点"
+        achievement_rate: "達成率"
+        created_at: "作成日時"
+        preparation_time_minutes: "学習時間" 
+        display_preparation_time: "学習時間"
+        test_name_id: "テスト名"
+        max_score_id: "満点"
+        subject_id: "教科"
+      sample_target:
+        test_name: "テスト名"
+        target_score: "目標"
+        max_score: "満点"
+        target_achievement_rate: "達成率"
+        created_at: "作成日時"
+        test_date: "テスト実施日"
+        target_preparation_time_minutes: "目標学習時間" 
+        display_preparation_time: "学習時間"
+        test_name_id: "テスト名"
+        max_score_id: "満点"
+        subject_id: "教科"
+      sample_grade: 
+        grade_id: '学年'
+      sample_user_class:
         user_class_id: 'クラス' 
       group:
         group_name: 'グループ名'

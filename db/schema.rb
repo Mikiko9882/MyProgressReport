@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_18_110633) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_27_063702) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,131 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_18_110633) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["teacher_id"], name: "index_max_scores_on_teacher_id"
+  end
+
+  create_table "sample_admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_sample_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_sample_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "sample_max_scores", force: :cascade do |t|
+    t.integer "max_score", null: false
+    t.bigint "sample_teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_teacher_id"], name: "index_sample_max_scores_on_sample_teacher_id"
+  end
+
+  create_table "sample_schools", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone_number"
+    t.string "email"
+    t.string "website"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "sample_admin_id", null: false
+    t.index ["code"], name: "index_sample_schools_on_code", unique: true
+    t.index ["sample_admin_id"], name: "index_sample_schools_on_sample_admin_id"
+  end
+
+  create_table "sample_student_classes", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "sample_school_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_school_id"], name: "index_sample_student_classes_on_sample_school_id"
+  end
+
+  create_table "sample_students", force: :cascade do |t|
+    t.string "student_number", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "name"
+    t.string "furigana"
+    t.bigint "sample_school_id"
+    t.bigint "grade_id"
+    t.bigint "sample_student_class_id"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grade_id"], name: "index_sample_students_on_grade_id"
+    t.index ["reset_password_token"], name: "index_sample_students_on_reset_password_token", unique: true
+    t.index ["sample_school_id"], name: "index_sample_students_on_sample_school_id"
+    t.index ["sample_student_class_id"], name: "index_sample_students_on_sample_student_class_id"
+    t.index ["student_number"], name: "index_sample_students_on_student_number", unique: true
+  end
+
+  create_table "sample_subjects", force: :cascade do |t|
+    t.string "subject_name", null: false
+    t.bigint "sample_teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_teacher_id"], name: "index_sample_subjects_on_sample_teacher_id"
+  end
+
+  create_table "sample_targets", force: :cascade do |t|
+    t.bigint "sample_student_id"
+    t.bigint "sample_test_name_id"
+    t.bigint "sample_subject_id"
+    t.bigint "sample_max_score_id"
+    t.integer "target_score"
+    t.integer "target_preparation_time_minutes"
+    t.float "target_achievement_rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_max_score_id"], name: "index_sample_targets_on_sample_max_score_id"
+    t.index ["sample_student_id"], name: "index_sample_targets_on_sample_student_id"
+    t.index ["sample_subject_id"], name: "index_sample_targets_on_sample_subject_id"
+    t.index ["sample_test_name_id"], name: "index_sample_targets_on_sample_test_name_id"
+  end
+
+  create_table "sample_teachers", force: :cascade do |t|
+    t.string "name"
+    t.string "login_id", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "sample_school_id", null: false
+    t.index ["login_id"], name: "index_sample_teachers_on_login_id", unique: true
+    t.index ["reset_password_token"], name: "index_sample_teachers_on_reset_password_token", unique: true
+    t.index ["sample_school_id"], name: "index_sample_teachers_on_sample_school_id"
+  end
+
+  create_table "sample_test_names", force: :cascade do |t|
+    t.string "test_name", null: false
+    t.bigint "sample_teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_teacher_id"], name: "index_sample_test_names_on_sample_teacher_id"
+  end
+
+  create_table "sample_test_results", force: :cascade do |t|
+    t.bigint "sample_student_id"
+    t.bigint "sample_test_name_id"
+    t.bigint "sample_subject_id"
+    t.bigint "sample_max_score_id"
+    t.integer "score", null: false
+    t.integer "preparation_time_minutes", null: false
+    t.float "achievement_rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sample_max_score_id"], name: "index_sample_test_results_on_sample_max_score_id"
+    t.index ["sample_student_id"], name: "index_sample_test_results_on_sample_student_id"
+    t.index ["sample_subject_id"], name: "index_sample_test_results_on_sample_subject_id"
+    t.index ["sample_test_name_id"], name: "index_sample_test_results_on_sample_test_name_id"
   end
 
   create_table "schools", force: :cascade do |t|
@@ -146,6 +271,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_18_110633) do
   end
 
   add_foreign_key "max_scores", "teachers"
+  add_foreign_key "sample_max_scores", "sample_teachers"
+  add_foreign_key "sample_schools", "sample_admins"
+  add_foreign_key "sample_student_classes", "sample_schools"
+  add_foreign_key "sample_students", "grades"
+  add_foreign_key "sample_students", "sample_schools"
+  add_foreign_key "sample_students", "sample_student_classes"
+  add_foreign_key "sample_subjects", "sample_teachers"
+  add_foreign_key "sample_targets", "sample_max_scores"
+  add_foreign_key "sample_targets", "sample_students"
+  add_foreign_key "sample_targets", "sample_subjects"
+  add_foreign_key "sample_targets", "sample_test_names"
+  add_foreign_key "sample_teachers", "sample_schools"
+  add_foreign_key "sample_test_names", "sample_teachers"
+  add_foreign_key "sample_test_results", "sample_max_scores"
+  add_foreign_key "sample_test_results", "sample_students"
+  add_foreign_key "sample_test_results", "sample_subjects"
+  add_foreign_key "sample_test_results", "sample_test_names"
   add_foreign_key "schools", "admins"
   add_foreign_key "student_classes", "schools"
   add_foreign_key "students", "grades"

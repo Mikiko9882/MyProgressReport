@@ -1,0 +1,48 @@
+<% content_for(:title, t('.title')) %>
+<!-- Breadcrumb -->
+<nav class="container mt-lg-4 pt-5" aria-label="breadcrumb"></nav>
+<!-- Page content -->
+<section class="container mt-4 mb-lg-5 pt-lg-2 pb-5">
+  <!-- Page title + Layout switcher + Search form -->
+  <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
+    <div class="col-lg-5 col-md-4">
+      <h1 class="mb-2 mb-md-0"><%= t '.title' %></h1>
+    </div>
+    <!-- Comparison table -->
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th style="text-align: center;">テスト名</th>
+          <th style="text-align: center;">教科</th>
+          <th style="text-align: center;">目標得点</th>
+          <th style="text-align: center;">実際の得点</th>
+          <th style="text-align: center;">得点</th>
+          <th style="text-align: center;">目標勉強時間</th>
+          <th style="text-align: center;">実際の勉強時間</th>
+          <th style="text-align: center;">勉強時間</th>
+          <th style="text-align: center;">目標達成率</th>
+          <th style="text-align: center;">実際の達成率</th>
+          <th style="text-align: center;">達成率</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sample_targets_and_results.each do |sample_comparison| %>
+          <tr>
+            <td style="text-align: center;"><%= sample_comparison[:sample_target].sample_test_name.test_name %></td>
+            <td style="text-align: center;"><%= sample_comparison[:sample_target].sample_subject.subject_name %></td>
+            <td style="text-align: center;"><%= sample_comparison[:sample_target].target_score %></td>
+            <td style="text-align: center; color: red;"><%= sample_comparison[:sample_test_result].score %></td>
+            <td style="text-align: center; color: <%= sample_comparison[:sample_score_comparison] ? 'green' : 'blue' %>;"><%= sample_comparison[:sample_score_comparison] ? "目標達成" : "目標未達成" %></td>
+            <td style="text-align: center;"><%= sample_comparison[:sample_target].display_preparation_time %></td>
+            <td style="text-align: center; color: red;"><%= sample_comparison[:sample_test_result].display_preparation_time %></td>
+            <td style="text-align: center; color: <%= sample_comparison[:sample_preparation_time_comparison] ? 'green' : 'blue' %>;"><%= sample_comparison[:sample_preparation_time_comparison] ? "目標達成" : "目標未達成" %></td>
+            <td style="text-align: center;"><%= sample_comparison[:sample_target].target_achievement_rate %>%</td>
+            <td style="text-align: center; color: red;"><%= sample_comparison[:sample_test_result].achievement_rate %>%</td>
+            <td style="text-align: center; color: <%= sample_comparison[:sample_achievement_rate_comparison] ? 'green' : 'blue' %>;"><%= sample_comparison[:sample_achievement_rate_comparison] ? "目標達成" : "目標未達成" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

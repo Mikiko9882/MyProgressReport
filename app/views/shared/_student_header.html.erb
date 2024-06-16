@@ -30,6 +30,7 @@
     </div>
 
     <%= link_to '比較する', comparisons_index_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex me-3' %>
+    <%= link_to '勉強計画', study_plans_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex me-3' %>
 
     <%= link_to (t 'defaults.logout'), destroy_student_session_path, class: 'btn btn-primary btn-sm fs-sm rounded d-lg-inline-flex', data: {turbo_method: :delete} %>
   </div>

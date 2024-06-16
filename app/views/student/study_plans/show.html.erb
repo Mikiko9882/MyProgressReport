@@ -1,0 +1,27 @@
+<div class="container d-flex flex-wrap justify-content-center justify-content-center pt-5">
+  <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
+    <h1 class="text-center text-xl-start"><%= t '.title' %></h1>
+    <div class="btn-group mb-3" role="group">
+      <%= link_to t('defaults.edit'), edit_study_plan_path(@study_plan.id), class: 'btn btn-success me-2' %>
+      <%= button_to t('defaults.delete'), study_plan_path(@study_plan), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: 'btn btn-danger me-2' %>
+    </div>
+    <div class="row">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">日時</th>
+            <td><%= @study_plan.start_time.to_date %></td>
+          </tr>
+          <tr>
+            <th scope="row">科目</th>
+            <td><%= @study_plan.subject.subject_name %></td>
+          </tr>
+          <tr>
+            <th scope="row">勉強内容</th>
+            <td><%= simple_format(@study_plan.content) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

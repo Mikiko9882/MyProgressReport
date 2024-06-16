@@ -1,0 +1,35 @@
+<% content_for(:title, t('.title')) %>
+<div class="container d-flex flex-wrap justify-content-center justify-content-center pt-5">
+  <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
+    <h1 class="text-center text-xl-start"><%= t '.title' %></h1>
+    <%= form_with(model: @study_plan, url: study_plan_path(@study_plan), local: true, method: :patch) do |f| %>
+      <%= render "students/shared/error_messages", resource: @study_plan %>
+      <div class="row mb-3">
+        <div class="col-12 mb-4">
+          <div class="position-relative mb-0">
+            <div class="form-group mb-4">
+              <%= f.label :start_time, "勉強日" %>
+              <%= f.date_field :start_time, class: 'form-control' %>
+            </div>
+
+            <div class="col-12">
+              <div class="position-relative mb-4">
+                <div class="form-group">
+                  <%= f.label :subject_id, "勉強科目" %>
+                  <%= f.collection_select :subject_id, @subjects, :id, :subject_name, {}, {class: "form-control custom-select-lg"} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mb-4">
+              <%= f.label :content, "勉強内容" %>
+              <%= f.text_area :content, class: 'form-control', rows: 6, placeholder: "例：ワークをP5~10まで。" %>
+            </div>
+
+            <%= f.submit '更新する', class: "btn btn-primary shadow-primary btn-lg w-100" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

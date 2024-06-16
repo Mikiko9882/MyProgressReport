@@ -149,6 +149,16 @@ ja:
     comparisons:
       index:
         title: "目標とテスト結果の比較"
+    study_plans:
+      index:
+        title: "勉強計画"
+      new:
+        title: "勉強計画作成"
+      show:
+        title: "詳細"
+      edit:
+        title: "勉強内容変更"
+
   sample_students:
     sessions:
       new:

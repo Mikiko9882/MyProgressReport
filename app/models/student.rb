@@ -6,6 +6,7 @@ class Student < ApplicationRecord
   belongs_to :student_class
   has_many :test_results, dependent: :destroy
   has_many :targets, dependent: :destroy
+  has_many :study_plans, dependent: :destroy
 
   validates :name, presence: true
   validates :furigana, presence: true, format: { with: /\A[ぁ-んー－　]+\z/, allow_blank: true }

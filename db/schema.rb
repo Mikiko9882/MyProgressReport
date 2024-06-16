@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_27_063702) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_16_070850) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -207,6 +207,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_063702) do
     t.index ["student_number"], name: "index_students_on_student_number", unique: true
   end
 
+  create_table "study_plans", force: :cascade do |t|
+    t.bigint "student_id"
+    t.bigint "subject_id"
+    t.datetime "start_time"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_study_plans_on_student_id"
+    t.index ["subject_id"], name: "index_study_plans_on_subject_id"
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.string "subject_name", null: false
     t.bigint "teacher_id"
@@ -293,6 +304,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_063702) do
   add_foreign_key "students", "grades"
   add_foreign_key "students", "schools"
   add_foreign_key "students", "student_classes"
+  add_foreign_key "study_plans", "students"
+  add_foreign_key "study_plans", "subjects"
   add_foreign_key "subjects", "teachers"
   add_foreign_key "targets", "max_scores"
   add_foreign_key "targets", "students"

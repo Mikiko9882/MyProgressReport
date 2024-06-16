@@ -105,6 +105,8 @@ Rails.application.routes.draw do
       end
       resources :targets, except: [:show]
       get 'comparisons/index'
+
+      resources :study_plans
     end
 
     namespace :sample_student, path: 'ss' do

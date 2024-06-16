@@ -1,0 +1,20 @@
+<% content_for(:title, t('.title')) %>
+<!-- Breadcrumb -->
+<nav class="container mt-lg-4 pt-5" aria-label="breadcrumb"></nav>
+<section class="container mt-4 mb-lg-5 pt-lg-2 pb-5">
+  <!-- Page title + Layout switcher + Search form -->
+  <div class="row align-items-end gy-3 mb-4 pb-lg-3 pb-1">
+    <div class="col-lg-5 col-md-4">
+      <h1 class="mb-2 mb-md-0"><%= t '.title' %></h1>
+    </div>
+    <div class="trainings">
+      <%= link_to "記録する", new_study_plan_path, class: "training-edit" %>
+      <%= month_calendar events: @study_plans do |date, study_plans| %>
+        <%= date.day %>
+        <% study_plans.each do |study_plan| %>
+          <%= link_to study_plan.subject.subject_name, study_plan_path(id: study_plan.id) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>

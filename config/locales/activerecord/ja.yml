@@ -13,6 +13,7 @@ ja:
       max_score: '満点'
       test_name: 'テスト名'
       target: '目標'
+      study_plan: '勉強計画'
     attributes:
       admin:
         password: 'パスワード'

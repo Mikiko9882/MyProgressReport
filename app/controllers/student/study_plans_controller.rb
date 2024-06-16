@@ -1,5 +1,6 @@
 class Student::StudyPlansController < Student::BaseController
   before_action :find_study_plan, only: [:show, :edit, :update, :destroy]
+  before_action :set_beginning_of_week
   
   def index
     @study_plans = current_student.study_plans.order(created_at: :desc)
@@ -47,6 +48,10 @@ class Student::StudyPlansController < Student::BaseController
   end
   
   private
+
+  def set_beginning_of_week
+    Date.beginning_of_week = :sunday
+  end
   
   def find_study_plan
     @study_plan = current_student.study_plans.find(params[:id])

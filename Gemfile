@@ -61,6 +61,9 @@ gem 'pry-byebug'
 # 図を導入
 gem "chartkick"
 
+#カレンダーを導入
+gem 'simple_calendar', '~> 2.0'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
